@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Zero-Error Tolerance Actually Means for AI · Anupreet Walia</title>
+<meta name="description" content="When your AI handles 25% of U.S. mortgage closings, the error rate in the critical path has to be zero. Why that constraint is architectural, not a tu">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/writing/zero-error-tolerance.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="What Zero-Error Tolerance Actually Means for AI · Anupreet Walia">
+<meta property="og:description" content="When your AI handles 25% of U.S. mortgage closings, the error rate in the critical path has to be zero. Why that constraint is architectural, not a tu">
+<meta property="og:url" content="https://anupreetwalia.com/writing/zero-error-tolerance.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Zero-Error Tolerance Actually Means for AI · Anupreet Walia">
+<meta name="twitter:description" content="When your AI handles 25% of U.S. mortgage closings, the error rate in the critical path has to be zero. Why that constraint is architectural, not a tu">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/styles.css?v=1787008942">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What Zero-Error Tolerance Actually Means for AI","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026-03-04","url":"https://anupreetwalia.com/writing/zero-error-tolerance.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="../index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../index.html#work">work</a>
+    <a href="../writing/index.html" class="active">writing</a>
+    <a href="../research.html">research</a>
+    <a href="../patents.html">patents</a>
+    <a href="../resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<article><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <div class="post-meta">Mar 4, 2026 · 5 min read · LinkedIn</div>
+  <h1>What Zero-Error Tolerance Actually Means for AI</h1>
+  <p class="deck">When your AI handles 25% of U.S. mortgage closings, the error rate in the critical path has to be zero. Why that constraint is architectural, not a tuning problem.</p>
+  <p>When your AI is handling 25% of U.S. mortgage closings, you're not working on a transaction. You're working on a transaction that, if it leads to an error, could cause delays and losses on someone's home purchase. We're talking about million-dollar transactions where chances of fraud are high, and you're introducing a probabilistic AI solution into the mix.</p>
+<p>Error rates in the critical path need to be zero. Not "low." Not "acceptable." Zero.</p>
+<p>That's a strange constraint to put on a technology that is, by its nature, probabilistic. Machine learning models don't guarantee outcomes. They produce predictions with confidence scores. So when the business requirement is zero errors in the critical path, you have to design the entire system around that tension rather than pretend it doesn't exist.</p>
+<p>We had three AI models: TASHA, Doug, and Ann. They started as a single SageMaker model and evolved into specialized systems that reached 98% accuracy. Which sounds impressive until you remember what the other 2% means at scale. When you're processing tens of thousands of closings, 2% is hundreds of transactions where the AI got it wrong. Transactions tied to real people buying real homes, with real money on the line.</p>
+<p>So that 2% didn't get a pass. It got re-verified by humans. Every time. Not as an afterthought, not as a "nice to have" quality check. It was built into the pipeline as a core architectural decision. The system knew what it didn't know, flagged it, and routed it to a human. That boundary between what the AI handles and what gets escalated wasn't a tuning parameter we optimized later. It was the first thing we designed.</p>
+<p>That's what people miss about deploying AI in high-stakes environments. The hard part isn't getting to 98% accuracy. The hard part is building the system around the other 2%. The traceability, the fallbacks, the confidence thresholds, the human-in-the-loop routing, all designed so that the 2% never reaches the customer as an unverified output.</p>
+<p>Most enterprise AI today doesn't work this way. The system produces an output, the output goes to the user, and the user has no way to know whether this particular answer is in the 98% or the 2%. There's no confidence signal. No trace. No fallback. Just a well-written response that may or may not be right.</p>
+<p>I think about this every time I see AI deployed in sales, customer success, operations. Environments where the outputs feed directly into customer-facing conversations and business decisions. The tolerance for error might be higher than mortgage closings, but it's not infinite. A rep who walks into a meeting with wrong account intelligence loses credibility. A manager who commits a forecast based on AI-surfaced pipeline data that missed a key risk loses trust with the board. The errors compound, and because there's no traceability, nobody can diagnose where things went wrong.</p>
+<p>The fix is architectural. Not better models, better systems around the models. Traceability built in from the start, not bolted on. Confidence-aware routing so the system knows when to surface an answer and when to say "I don't have enough to be sure." Data provenance so every output connects back to the specific inputs that produced it.</p>
+<p>It's harder to build this way. It's slower. But it's the difference between AI that works in a demo and AI that works when the stakes are real.</p>
+<p>That's the problem I spend most of my time on.</p>
+  <div class="author-box">
+    <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian. Originally published on <a href="https://www.linkedin.com/pulse/what-zero-error-tolerance-actually-means-ai-anupreet-walia-hjb4f/">LinkedIn</a>.
+  </div>
+</div></article>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>

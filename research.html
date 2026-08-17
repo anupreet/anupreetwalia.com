@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BatchDAG · Anupreet Walia</title>
+<meta name="description" content="BatchDAG: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Working paper by Anupreet Walia, Brevian.ai.">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/research.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="BatchDAG · Anupreet Walia">
+<meta property="og:description" content="BatchDAG: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Working paper by Anupreet Walia, Brevian.ai.">
+<meta property="og:url" content="https://anupreetwalia.com/research.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BatchDAG · Anupreet Walia">
+<meta name="twitter:description" content="BatchDAG: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Working paper by Anupreet Walia, Brevian.ai.">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css?v=1787008942">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"BatchDAG: LLM-Planned Execution Graphs for Scalable Ad-Hoc Analysis Over Enterprise Data","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026","publisher":{"@type":"Organization","name":"Brevian"},"url":"https://anupreetwalia.com/research.html"}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="index.html#work">work</a>
+    <a href="writing/index.html">writing</a>
+    <a href="research.html" class="active">research</a>
+    <a href="patents.html">patents</a>
+    <a href="resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<section style="border:none"><div class="wrap">
+  <a class="back" href="index.html">← home</a>
+  <p class="eyebrow">Research · Working paper</p>
+  <h1>BatchDAG: LLM-Planned Execution Graphs for Scalable Ad-Hoc Analysis Over Enterprise Data</h1>
+  <p style="color:var(--muted);font-family:var(--mono);font-size:14px">Anupreet Walia · Brevian.ai · 2026</p>
+
+  <div class="btn-row">
+    <a class="btn primary" href="assets/BatchDAG_Walia.pdf">Read the full paper (PDF) →</a>
+  </div>
+
+  <div class="abstract">
+  <strong>Abstract.</strong> Large language models excel at analyzing individual documents but break down when users ask exhaustive, cross-entity analytical questions over enterprise-scale datasets. For example, &ldquo;Did our account executives open every meeting with effective discovery questions?&rdquo; across 50,000 recorded meetings. The single-agent tool-calling paradigm fails at this scale for three compounding reasons: context window overflow, loss of per-entity attribution in global top-N retrieval, and linear wall-clock time growth from sequential tool calls. We present <strong>BatchDAG</strong>, a system in which an LLM generates a typed directed acyclic graph (DAG) of operations (SQL queries, semantic searches, in-memory transforms, parallel fan-outs, and single-shot analyses) that a deterministic execution engine then evaluates with topological-wave parallelism. Structured JSON rows flow between steps (never prose summaries), enabling proper joins, filters, and grouping. A key optimization, <em>entity-aware batching</em>, groups input rows by their logical entity before fan-out, reducing LLM calls by up to 47&times; while preserving per-entity attribution. BatchDAG has been deployed in production at Brevian.ai, processing analytical queries over corpora of 50,000+ meetings and 3,000+ sales opportunities in under 60 seconds.
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">47×</div><div class="lbl">fewer LLM calls via entity-aware batching</div></div>
+    <div class="stat"><div class="num">&lt;60s</div><div class="lbl">per query over 50K+ meetings</div></div>
+    <div class="stat"><div class="num">98.8%</div><div class="lbl">valid-DAG planning rate (300 calls)</div></div>
+    <div class="stat"><div class="num">77%</div><div class="lbl">transcript evidence rate (vs 46–60% baselines)</div></div>
+  </div>
+
+  <h2>The problem</h2>
+  <p>Tool-augmented LLM agents (ReAct, Toolformer, LangChain, LlamaIndex) perform well on queries targeting individual entities or small document sets. But enterprise users increasingly ask exhaustive, cross-entity analytical queries that require processing hundreds to thousands of entities, each needing its own retrieval, contextual analysis, and per-entity attribution: &ldquo;analyze every deal to see if security insurance was covered,&rdquo; or &ldquo;for each meeting, check if the key stakeholder negotiated on price.&rdquo; These expose three limits of the single-agent loop: context window overflow, loss of per-entity attribution under global top-N search, and linear wall-clock growth.</p>
+
+  <h2>The approach</h2>
+  <p>BatchDAG decomposes the problem into two phases: an LLM <strong>planner</strong> that generates a typed DAG of operations from a natural-language query, and a deterministic <strong>execution engine</strong> that evaluates the DAG with topological-wave parallelism, structured data flow, and entity-aware batching. Each step is one of six typed operations (<code>sql</code>, <code>search</code>, <code>transform</code>, <code>fan_out</code>, <code>analyze</code>, <code>compare</code>), four of which require zero LLM calls during execution. Only <code>fan_out</code> and <code>analyze</code> invoke the model, and entity-aware batching minimizes that cost by grouping rows by their logical entity (meeting, deal, account) before fan-out.</p>
+
+  <h2>Key contributions</h2>
+  <ul>
+    <li>A typed DAG formalism for decomposing ad-hoc analytical queries into composable operations with structured inter-step data flow.</li>
+    <li>An entity-aware batching algorithm achieving up to 47&times; reduction in LLM calls versus row-level batching.</li>
+    <li>A goal-based planning prompt architecture that outperforms both exhaustive-rules and few-shot example approaches.</li>
+    <li>A production deployment report on cost, latency, and correctness over enterprise-scale data (50K+ meetings, 3K+ opportunities).</li>
+    <li>A controlled evaluation showing automatically generated DAG pipelines match expert-designed baselines, with superior provenance and 27% fewer hallucinations via structured intermediates.</li>
+  </ul>
+
+  <h2>Why structured intermediates matter</h2>
+  <p>Steps pass structured JSON rows between them, never prose summaries. This is the single most important architectural decision in BatchDAG. When intermediate results were summarized in natural language, downstream steps hallucinated data and lost attribution. Structured rows are less expressive but fully composable: they support real database-style joins, filters, and grouping, and they preserve the provenance chain from source data to final answer.</p>
+
+  <div class="btn-row">
+    <a class="btn primary" href="assets/BatchDAG_Walia.pdf">Read the full paper (PDF) →</a>
+    <a class="btn" href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Google Scholar</a>
+  </div>
+  <p style="color:var(--faint);font-size:13px;margin-top:18px;font-family:var(--mono)">Working paper. arXiv submission pending.</p>
+</div></section>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>

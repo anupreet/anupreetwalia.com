@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revising the Engineering Interview Loop · Anupreet Walia</title>
+<meta name="description" content="Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature desig">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/writing/revising-the-engineering-interview-loop.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="Revising the Engineering Interview Loop · Anupreet Walia">
+<meta property="og:description" content="Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature desig">
+<meta property="og:url" content="https://anupreetwalia.com/writing/revising-the-engineering-interview-loop.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revising the Engineering Interview Loop · Anupreet Walia">
+<meta name="twitter:description" content="Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature desig">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/styles.css?v=1787008942">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Revising the Engineering Interview Loop","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026-08-17","url":"https://anupreetwalia.com/writing/revising-the-engineering-interview-loop.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="../index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../index.html#work">work</a>
+    <a href="../writing/index.html" class="active">writing</a>
+    <a href="../research.html">research</a>
+    <a href="../patents.html">patents</a>
+    <a href="../resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<article><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <div class="post-meta">Aug 17, 2026 · 11 min read</div>
+  <h1>Revising the Engineering Interview Loop</h1>
+  <p class="deck">Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature design through rollout — now that coding agents are part of the job.</p>
+  <p>I have always preferred skill-based interviews. The basic premise is that hiring should evaluate whether someone has the skills required to do the job, and the interview process should be designed specifically to collect that evidence.</p>
+<p>Structured interviewing has existed for a long time, and Google helped make the approach common in technology companies. One of the reasons for introducing more structure into interviewing was to reduce the effect of unconscious bias. If interviewers decide independently what they care about after meeting a candidate, decisions can easily become influenced by familiarity, background, communication style, or simply what an individual interviewer happens to value. Defining the skills, questions and evaluation criteria in advance creates a more consistent basis for making the decision.</p>
+<p>There are a few parts to making this work in practice.</p>
+<h3>Start with the skills the team needs</h3>
+<p>For a startup, I start the hiring process by looking at the existing engineering team and identifying the skills we are missing.</p>
+<p>This matters more at smaller companies because there is very little redundancy in the team. If you have eight engineers and nobody has experience operating a particular kind of distributed system, that is a meaningful gap. Before ~30 people, individual hires can materially change what the engineering organization is capable of doing.</p>
+<p>So, you start with skills, and the job description follows from this exercise. Some of those skills will be common across engineering roles and others will exist because of the particular gap/specialization we are trying to fill. The interview loop can then be constructed around them. Every important skill in the job description should have somewhere in the loop where we evaluate it. Similarly, every interview in the loop should correspond to something we have decided is important for the role.</p>
+<p>This also makes it possible to notice when an interview loop has accumulated sessions that no longer serve a purpose. Engineering organizations often inherit interview formats from previous companies or continue running a particular interview because it has always been part of the process. Starting from the skills gives us a way to periodically reconsider whether each session is still useful.</p>
+<h3>Define the evaluation before interviewing candidates</h3>
+<p>For each session in the loop, we need to decide what skills are being tested, how we will test them and how the interviewer should score what they observe.</p>
+<p>The scoring rubric should be created at the same time as the interview loop mostly to avoid updating the evaluation for a skill that was not part of the criterion while interviewing someone we like. When that happens, the candidates we saw earlier were evaluated against a different standard, and we no longer have a consistent basis for comparing them. We can decide that we got the role definition wrong and change it for subsequent candidates, but the evaluation for a particular loop should remain consistent.</p>
+<p>The interviews themselves should also be administered as similarly as possible. Candidates should get equivalent problems, comparable information and roughly the same amount of help from the interviewer. Interviewers need to understand what they are evaluating and what different scores mean.</p>
+<p>There will always be judgment involved in interviewing. The purpose of structure is to make that judgment operate against criteria we agreed on before knowing who the candidate was.</p>
+<h3>The engineering skills I have traditionally evaluated</h3>
+<p>For engineering roles, I have generally organized the loop around four areas: coding, system design, feature design, and values and principles. Fifth loop gets added if we are looking for specialization like Data Science or FE etc.</p>
+<p>The coding interview looks at programming ability and the engineering practices someone applies while writing software. I care about whether they can understand a problem, structure an implementation, reason through edge cases, debug it and leave behind code that another engineer could work with.</p>
+<p>System design looks at depth in distributed systems and the ability to reason about scale. The specifics depend on the role, but this is where we can explore data models, service boundaries, consistency, reliability, latency, failure modes, capacity and operational concerns. The goal is to understand how well someone can reason about systems once the problem is larger than a single program.</p>
+<p>Feature design is closer to the normal interaction between engineering and product. A PM can provide a product requirement and the engineer works through what would be required to implement it. This gives us a view into how they deal with ambiguity, identify the core technical work, make product and engineering tradeoffs, define interfaces and data models, and decide what should be included in the initial implementation.</p>
+<p>The values and principles interview covers how someone approaches their work and makes decisions. I use it to understand what they value in an engineering organization, how they think about ownership, quality, speed, disagreement and collaboration, and whether there are important areas of disconnect with the way the company operates.</p>
+<p>These categories have been fairly stable for me until coding agents! This is the new version I have, and I am actively looking at how others are doing it.</p>
+<table>
+<thead>
+<tr>
+<th>Interview</th>
+<th>Skills tested before</th>
+<th>Skills tested now</th>
+<th>Rubric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coding → Coding with agents</strong></td>
+<td>Problem decomposition, programming fundamentals, code structure, correctness, debugging, testing and engineering practices</td>
+<td>All of the previous skills, plus planning with an agent, context management, task decomposition, iteration, evaluation of generated code and efficient use of the agent</td>
+<td><strong>Problem understanding:</strong> develops a coherent model of the problem before making significant changes. <strong>Plan:</strong> creates a reasonable implementation approach and decomposes work into verifiable steps. <strong>Context:</strong> gives the agent relevant context without repeatedly expanding context unnecessarily. <strong>Iteration:</strong> recognizes incorrect or unproductive directions and adjusts effectively. <strong>Code judgment:</strong> reads and evaluates generated code rather than assuming it is correct. <strong>Correctness:</strong> produces a working, tested implementation and can explain it. <strong>Efficiency:</strong> makes reasonable use of time, interactions and tokens to reach the result.</td>
+</tr>
+<tr>
+<td><strong>System design</strong></td>
+<td>Distributed systems, data modeling, service boundaries, scalability, reliability, consistency, latency, capacity and failure modes</td>
+<td>Largely unchanged</td>
+<td><strong>Decomposition:</strong> identifies the important components and responsibilities. <strong>Tradeoffs:</strong> understands and explains architectural choices rather than relying on standard patterns. <strong>Scale:</strong> identifies where the design changes as load and data grow. <strong>Reliability:</strong> reasons about failures, recovery and degraded operation. <strong>Data:</strong> chooses appropriate storage and consistency models. <strong>Operations:</strong> considers observability, capacity and production behavior.</td>
+</tr>
+<tr>
+<td><strong>Feature design → Feature design + rollout</strong></td>
+<td>Translating product requirements into technical design, managing ambiguity, APIs, data models, edge cases, implementation scope and product/engineering tradeoffs</td>
+<td>All of the previous skills, plus rollout design, feature gating, experimentation, observability, validation and iteration</td>
+<td><strong>Requirements:</strong> turns the product requirement into a clear technical problem. <strong>Scope:</strong> identifies a reasonable first implementation and avoids unnecessary work. <strong>Design:</strong> produces coherent APIs, data models and system changes. <strong>Rollout:</strong> defines how the feature can be exposed incrementally and disabled safely. <strong>Observability:</strong> identifies the operational and product signals required during rollout. <strong>Validation:</strong> defines what would indicate that the feature is working and what would cause the team to stop or change course. <strong>Iteration:</strong> designs the implementation so that the team can learn and modify the feature without excessive cost.</td>
+</tr>
+<tr>
+<td><strong>Values and principles</strong></td>
+<td>Ownership, quality, speed, collaboration, disagreement, decision-making and alignment with how the company operates</td>
+<td>Largely unchanged</td>
+<td><strong>Decision-making:</strong> can explain how they make decisions when there are competing priorities. <strong>Ownership:</strong> demonstrates an appropriate level of responsibility for outcomes. <strong>Tradeoffs:</strong> has a considered approach to quality, speed and scope. <strong>Collaboration:</strong> can work through disagreement and incorporate information from others. <strong>Self-awareness:</strong> can describe decisions that did not work and how their thinking changed. <strong>Alignment:</strong> no significant disconnect between the candidate's working principles and the environment we are hiring them into.</td>
+</tr>
+<tr>
+<td><strong>Specialization, when required</strong></td>
+<td>Role-specific depth such as frontend, data science, ML, security or infrastructure</td>
+<td>Changes based on the skill gap identified for the role</td>
+<td>Defined when the role is created. The rubric should describe the specific depth required for this hire rather than using a generic specialization interview.</td>
+</tr>
+</tbody>
+</table>
+<h3>Coding with agents</h3>
+<p>Engineers on our teams are increasingly going to write software with coding agents. I want the coding interview to reflect that environment.</p>
+<p>The candidate should have access to an agent and be given an engineering task. The interview can then evaluate how they use the agent as part of the implementation process.</p>
+<p>There are several skills involved here that weren't visible in a traditional coding interview. One is context management. The candidate has to determine what information the agent needs, how much of the codebase or problem to expose, and how to keep the agent working with the relevant context as the task progresses.</p>
+<p>Planning is another part of it. For a sufficiently complicated task, I would expect the engineer to understand the problem and develop an approach before asking an agent to make broad changes. That plan may itself be developed with the agent. What is critical here is whether the engineer has a coherent model of what they are trying to build and can break the work into pieces that can be executed and verified.</p>
+<p>Iteration is also observable. Agents will produce implementations that are incomplete, unnecessarily complicated or simply wrong. The engineer needs to recognize this, determine what caused the problem and decide whether to correct the current approach or change direction. They also need to know when to inspect the code directly rather than continuing to prompt.</p>
+<p>Efficiency is the third axis of evaluation. An engineer can get to a working solution through a large number of agent interactions and a very large context, or they can provide better context and direction and get there with considerably less work. Tokens, elapsed time and number of interactions aren't useful as isolated metrics, but they provide additional information about how effectively someone is using the tool.</p>
+<p>The resulting interview still tests programming. The candidate has to understand the generated code, evaluate its correctness, make technical decisions and take responsibility for the final implementation. We are also evaluating a new set of skills around directing the agent that produced some of that implementation.</p>
+<h3>System design</h3>
+<p>I don't see a significant reason to change the system design interview yet.</p>
+<p>The implementation tools available to engineers have changed, but the systems we operate still have the same underlying properties. Engineers need to understand distributed systems, data, reliability, capacity, latency and failure modes. They need to be able to make architectural decisions and understand how those decisions behave as usage grows.</p>
+<p>Agents can make implementing a proposed architecture considerably faster, which may eventually change some of the emphasis in system design interviews. For now, the underlying skill being measured is still one I want to evaluate directly.</p>
+<h3>Feature design and rollout</h3>
+<p>Feature design needs a broader scope.</p>
+<p>As implementation becomes faster, teams can build more features and more variations of a feature in the same amount of time. That increases the importance of being able to test those features cheaply and safely. If experimentation and rollout remain expensive, the organization simply moves the bottleneck from implementation to validation.</p>
+<p>I would therefore extend the feature design interview through the rollout of the feature.</p>
+<p>After working through the implementation, the candidate should describe how they would introduce it into production. This includes feature gating, the initial population that receives the feature, the ability to disable it, the telemetry required to understand its behavior, and the tests that need to exist before and during rollout.</p>
+<p>The candidate should also define how they would validate the feature. Depending on the product, this could involve operational metrics, product metrics, qualitative feedback or an experiment. I want to understand what information they would collect, how they would decide whether to expand the rollout, and what they would do if the results were unclear.</p>
+<p>This is also useful for understanding how an engineer thinks about iteration. The first implementation does not need to answer every product question. A feature can be designed so that the team can expose it to a small population, learn something specific and make the next implementation decision with more information.</p>
+<p>Feature gating and observability become part of the technical design in this model. They need to be considered while designing the feature because they affect its architecture and determine how easily the team can operate and modify it after release.</p>
+<p>This could be a separate interview for roles where experimentation and rollout are particularly important. For most product engineering roles, I would start by extending the existing feature design session rather than adding another interview.</p>
+<h3>Values and principles</h3>
+<p>I would keep the values and principles interview largely unchanged.</p>
+<p>The tools engineers use will continue to change, and teams will develop new working practices around them. The values interview is intended to understand the more persistent aspects of how someone works: how they make decisions, what they expect from other engineers, how they handle disagreement, what they consider good engineering work and what kind of environment allows them to do their best work.</p>
+<p>There will naturally be some discussion of AI and agents here because they are now part of engineering work, but I don't think they require a separate values framework.</p>
+<h3>Updating the loop</h3>
+<p>With these changes, the engineering loop I would use today consists of coding with agents, system design, feature design and rollout, and values and principles.</p>
+<p>That particular set of interviews isn't intended to be permanent. It reflects the engineering skills I currently want to evaluate. As the way we build software changes, I expect the skills to change again.</p>
+<p>The process for changing the interview loop should remain the same. Look at the engineering organization and the work it needs to do. Identify the skills that are missing or particularly important. Put those skills into the definition of the role. Design interviews that allow candidates to demonstrate them. Define the scoring criteria before interviewing candidates, and administer the resulting loop consistently.</p>
+<p>That is the useful part of a skill-based interview system. It gives us a way to change hiring as engineering itself changes without having to reinvent how we think about hiring each time.</p>
+  <div class="author-box">
+    <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian.
+  </div>
+</div></article>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>
