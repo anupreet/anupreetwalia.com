@@ -206,3 +206,4 @@ article table { display: block; overflow-x: auto; border-collapse: collapse; mar
 article th, article td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; min-width: 180px; }
 article th { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
 article td strong { color: var(--accent-hover); }
+article .post-hero { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; margin: 24px 0 8px; }

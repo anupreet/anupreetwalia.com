@@ -12,7 +12,7 @@ PERSON_LD = '''<script type="application/ld+json">
 '''
 
 RESEARCH_LD = '''<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"BatchDAG: LLM-Planned Execution Graphs for Scalable Ad-Hoc Analysis Over Enterprise Data","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026","publisher":{"@type":"Organization","name":"Brevian"},"url":"https://anupreetwalia.com/research.html"}
+{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"BatchDAG: LLM-Planned Execution Graphs for Scalable Ad-Hoc Analysis Over Enterprise Data","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026","publisher":{"@type":"Organization","name":"Brevian"},"url":"https://anupreetwalia.com/research.html","sameAs":"https://arxiv.org/abs/2607.18241"}
 </script>
 '''
 
@@ -36,10 +36,10 @@ def footer(depth=0):
   <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
 </div></footer>'''
 
-def page(title, body, active, depth=0, desc="", cpath="", og_type="website", head_extra=""):
+def page(title, body, active, depth=0, desc="", cpath="", og_type="website", head_extra="", og_image=None):
     p = "../" * depth
     canonical = BASE + "/" + cpath
-    og_image = BASE + "/assets/og-image.png"
+    og_image = og_image or (BASE + "/assets/og-image.png")
     # strip HTML entities that read awkwardly in social cards
     clean_title = title.replace("&amp;", "&")
     clean_desc = desc.replace("&amp;", "&")
@@ -198,6 +198,10 @@ posts = [
       "iso": "2026-08-17",
       "read": "11 min",
       "host": True,
+      "first_here": True,
+      "orig": "https://www.linkedin.com/posts/anupreetwalia_this-is-a-work-in-progress-i-have-been-ugcPost-7495263711993987072-557Z/",
+      "image": "interview-loop-header.png",
+      "image_alt": "What the coding interview stops measuring, and what it starts measuring instead: skills added (planning with an agent, context management, iteration, judging generated code, efficiency, rollout design, validation), skills that are no longer signal, and skills unchanged.",
       "deck": "Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature design through rollout — now that coding agents are part of the job.",
       "md": """I have always preferred skill-based interviews. The basic premise is that hiring should evaluate whether someone has the skills required to do the job, and the interview process should be designed specifically to collect that evidence.
 
@@ -635,13 +639,16 @@ for po in posts:
         body_html = markdown.markdown(po["md"], extensions=["extra"])
         orig = po.get("orig")
         venue = ("LinkedIn" if "linkedin.com" in orig else "Brevian") if orig else ""
-        origin_line = f' Originally published on <a href="{orig}">{venue}</a>.' if orig else ""
+        pub_verb = "Also published" if po.get("first_here") else "Originally published"
+        origin_line = f' {pub_verb} on <a href="{orig}">{venue}</a>.' if orig else ""
         meta_bits = " · ".join(x for x in [po["date"], (po.get("read","") + " read" if po.get("read") else ""), venue] if x)
+        hero = f'<img class="post-hero" src="../assets/{po["image"]}" alt="{po.get("image_alt","")}">' if po.get("image") else ""
         art = f'''<article><div class="wrap">
   <a class="back" href="index.html">← all writing</a>
   <div class="post-meta">{meta_bits}</div>
   <h1>{po["title"]}</h1>
   <p class="deck">{po["deck"]}</p>
+  {hero}
   {body_html}
   <div class="author-box">
     <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian.{origin_line}
@@ -655,7 +662,8 @@ for po in posts:
             '"publisher":{"@type":"Organization","name":"Anupreet Walia"}}\n</script>\n')
         write(f"writing/{po['slug']}.html",
               page(po["title"] + " · Anupreet Walia", art, "writing", 1, po["deck"][:150],
-                   cpath=f"writing/{po['slug']}.html", og_type="article", head_extra=article_ld))
+                   cpath=f"writing/{po['slug']}.html", og_type="article", head_extra=article_ld,
+                   og_image=(BASE + "/assets/" + po["image"]) if po.get("image") else None))
     else:
         write(f"writing/{po['slug']}.html",
               f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -667,12 +675,13 @@ for po in posts:
 # ---------------------------------------------------------------- RESEARCH / BATCHDAG
 research_body = '''<section style="border:none"><div class="wrap">
   <a class="back" href="index.html">← home</a>
-  <p class="eyebrow">Research · Working paper</p>
+  <p class="eyebrow">Research · Preprint</p>
   <h1>BatchDAG: LLM-Planned Execution Graphs for Scalable Ad-Hoc Analysis Over Enterprise Data</h1>
-  <p style="color:var(--muted);font-family:var(--mono);font-size:14px">Anupreet Walia · Brevian.ai · 2026</p>
+  <p style="color:var(--muted);font-family:var(--mono);font-size:14px">Anupreet Walia · Brevian.ai · 2026 · <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a></p>
 
   <div class="btn-row">
-    <a class="btn primary" href="assets/BatchDAG_Walia.pdf">Read the full paper (PDF) →</a>
+    <a class="btn primary" href="https://arxiv.org/abs/2607.18241">Read the paper on arXiv →</a>
+    <a class="btn" href="assets/BatchDAG_Walia.pdf">PDF</a>
   </div>
 
   <div class="abstract">
@@ -705,13 +714,14 @@ research_body = '''<section style="border:none"><div class="wrap">
   <p>Steps pass structured JSON rows between them, never prose summaries. This is the single most important architectural decision in BatchDAG. When intermediate results were summarized in natural language, downstream steps hallucinated data and lost attribution. Structured rows are less expressive but fully composable: they support real database-style joins, filters, and grouping, and they preserve the provenance chain from source data to final answer.</p>
 
   <div class="btn-row">
-    <a class="btn primary" href="assets/BatchDAG_Walia.pdf">Read the full paper (PDF) →</a>
+    <a class="btn primary" href="https://arxiv.org/abs/2607.18241">Read the paper on arXiv →</a>
+    <a class="btn" href="assets/BatchDAG_Walia.pdf">PDF</a>
     <a class="btn" href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Google Scholar</a>
   </div>
-  <p style="color:var(--faint);font-size:13px;margin-top:18px;font-family:var(--mono)">Working paper. arXiv submission pending.</p>
+  <p style="color:var(--faint);font-size:13px;margin-top:18px;font-family:var(--mono)">Preprint · <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a></p>
 </div></section>'''
 write("research.html", page("BatchDAG · Anupreet Walia", research_body, "research", 0,
-      "BatchDAG: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Working paper by Anupreet Walia, Brevian.ai.",
+      "BatchDAG: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Preprint (arXiv:2607.18241) by Anupreet Walia, Brevian.ai.",
       cpath="research.html", og_type="article", head_extra=RESEARCH_LD))
 
 # ---------------------------------------------------------------- PATENTS
