@@ -755,40 +755,40 @@ write("patents.html", page("Patents · Anupreet Walia", patents_body, "patents",
 
 # ---------------------------------------------------------------- RESUME
 resume_roles = [
-    ("CTO &amp; Co-Founder", "Brevian (Felicis)", "San Mateo, CA", "12/02/2024 – Present",
-     "AI sales intelligence platform. Knowledge graphs + multi-agent LLMs help sales teams prep for calls, get real-time guidance, and learn from every conversation.",
-     ["Set product vision and strategy for a new category of sales intelligence built on structured knowledge, not call transcription. Positioned Brevian against incumbents like Gong and Chorus.",
-      "Owned product roadmap end-to-end. Shipped four products: Meeting Prep, Live Assist, Sales Coaching, and CRM Updates, shaped by customer discovery, competitive analysis, and direct market feedback.",
-      "Built Brevian&#39;s Knowledge Engine from scratch: a structured graph connecting products, features, pain points, stakeholders, objections, and deal context, enabling multi-hop reasoning that outperforms standard RAG.",
-      "Designed the multi-agent LLM architecture: three agent types (Chat, Meeting Intelligence, Intelligence), 10+ orchestrated tools, recursive tool calling, and context management across OpenSearch, PostgreSQL, and GPT-4o/5.1.",
-      "Built the GTM-ready product surface: enterprise integrations (Gong, Salesforce, Google Drive, Notion), onboarding flows, and a product-led growth experiment (Pipeline Health Workspace).",
-      "Stood up engineering culture, principles, hiring processes, and a leveling ladder (L3–L8) drawn from Stripe and Netflix."]),
-    ("VP of Engineering", "Baseten (Conviction)", "San Francisco, CA", "03/19/2024 – 11/30/2024",
-     "ML infrastructure startup. Platform for deploying and serving AI models at scale.",
-     ["Led cross-functional teams shipping developer experience and model observability features on TRT-LLM and vLLM with a Python backend on Kubernetes.",
-      "Drove SOC2 certification, launched a self-hosted enterprise solution, and tightened product operations across the org."]),
-    ("VP of Engineering", "Preset (backed by a16z, Redpoint)", "San Mateo, CA", "02/22/2021 – 03/11/2023",
-     "Cloud analytics platform built on Apache Superset. Enterprise data exploration and visualization. Raised $52.5M.",
-     ["Launched three products (SaaS, Hybrid Cloud, and Embedded Platform) with focus on infrastructure performance, cost efficiency, and enterprise compliance.",
-      "Scaled engineering from 20 to 60+ engineers across frontend, platform, data engineering, and infrastructure functions without slowing delivery.",
-      "Owned product and engineering strategy; shipped features while keeping infrastructure scalable, SOC2-compliant, and secure across multi-tenant cloud environments."]),
-    ("Director of Engineering / Interim VPE", "Snapdocs (Sequoia, Y Combinator)", "San Francisco, CA", "11/2018 – 02/2021",
-     "Digital mortgage closing platform. Series D, raised $47M+ from Sequoia, F-Prime, and Y Combinator.",
-     ["Grew engineering from 11 to 100 engineers. Built frontend, platform, data engineering, data science, and infrastructure teams from scratch. Cut mean time to recovery and reduced regressions.",
-      "Ran QA, DevOps, Data Science, Engineering, and Core Platform, keeping systems stable and scalable through rapid growth.",
-      "Built standardized hiring frameworks, technical interview processes, and evaluation rubrics across the org."]),
-    ("Engineering Manager", "Helix (KPCB, DFJ)", "San Carlos, CA", "11/2016 – 11/2018",
-     "Personal genomics platform. Series B, raised $320M.",
-     ["Started the mobile engineering team and shipped Helix&#39;s first native iOS app; built a distributed cross-functional team.",
-      "Led the platform team building an iOS SDK, marketplace APIs (React, Go, Swift), and an OAuth2 auth framework so partners could build products on top of genomic data."]),
+    ("CTO &amp; Co-Founder", "Brevian AI (Felicis)", "San Mateo, CA", "Dec 2024 – Present",
+     "AI sales intelligence built on structured knowledge and multi-agent LLM systems.",
+     ["Set product and technical strategy around structured sales intelligence, using a shared knowledge model to connect customer, product, meeting, and CRM data.",
+      "Took the strategy from concept to product, shipping Meeting Prep, Live Assist, Sales Coaching, and CRM Updates and using customer feedback to drive the roadmap.",
+      "Designed and built the Knowledge Engine, a structured graph connecting products, features, pain points, stakeholders, objections, and deal context, providing a common data and reasoning layer across products.",
+      "Designed the multi-agent architecture with three agent types, 10+ orchestrated tools, recursive tool calling, and context management across OpenSearch, PostgreSQL, and GPT-4o/5.1.",
+      "Built the engineering operating model, including hiring, engineering principles, and an L3–L8 leveling ladder."]),
+    ("VP of Engineering", "Baseten (Conviction)", "San Francisco, CA", "Mar 2024 – Nov 2024",
+     "ML infrastructure for deploying and serving AI models at scale.",
+     ["Led engineering for developer experience and model observability as Baseten expanded its inference platform.",
+      "Shipped model-serving capabilities on TRT-LLM and vLLM with a Python/Kubernetes platform and launched the company&#39;s self-hosted enterprise offering.",
+      "Drove SOC2 certification to support enterprise adoption."]),
+    ("VP of Engineering", "Preset (a16z, Redpoint)", "San Mateo, CA", "Feb 2021 – Mar 2023",
+     "Cloud analytics platform built on Apache Superset.",
+     ["Led product and engineering through Preset&#39;s transition from an open-source project into a commercial cloud platform, launching SaaS, Hybrid Cloud, and Embedded products.",
+      "Scaled engineering from 20 to 60+, building frontend, platform, data engineering, and infrastructure teams to support the company&#39;s growth.",
+      "Built the infrastructure and operating practices required for multi-tenant SaaS, enterprise security and compliance, and multiple deployment models."]),
+    ("Director of Engineering / Interim VPE", "Snapdocs (Sequoia, Y Combinator)", "San Francisco, CA", "Nov 2018 – Feb 2021",
+     "Digital mortgage closing platform.",
+     ["Led engineering through ~8&times; revenue growth, scaling the organization from 11 to 100 engineers and building frontend, platform, data engineering, data science, and infrastructure teams, supported by standardized hiring frameworks, interview processes, and evaluation rubrics.",
+      "Built the platform and engineering practices required to support the increase in customers and transaction volume, with investments in reliability, infrastructure, and developer productivity.",
+      "Led QA, DevOps, Data Science, Engineering, and Core Platform during this period."]),
+    ("Engineering Manager", "Helix (KPCB, DFJ)", "San Carlos, CA", "Nov 2016 – Nov 2018",
+     "Personal genomics platform.",
+     ["Built the mobile engineering function as Helix expanded its genomics platform into a consumer product and partner marketplace.",
+      "Shipped Helix&#39;s first native iOS application and built the platform iOS SDK, marketplace APIs, and OAuth2 framework used by partners across the Helix ecosystem."]),
     ("Tech Lead", "Microsoft", "San Francisco, CA", "2015 – 2016",
      "",
-     ["Led a team building Office prototypes with machine learning (Swift, C/C++, Python, Azure ML). Worked with Microsoft Research on an iOS app using MS Band biometric data for stress detection.",
-      "Selected for Microsoft&#39;s High Potential (HiPo) program, Microsoft Bench (2015)."]),
-    ("Computer Scientist", "Adobe Systems", "San Francisco, CA", "2009 – 2015",
+     ["Built Office prototypes using machine learning and an iOS application using Microsoft Band biometrics for stress detection with Microsoft Research.",
+      "Selected for Microsoft&#39;s High Potential (HiPo) program."]),
+    ("Computer Scientist", "Adobe", "San Francisco, CA", "2009 – 2015",
      "",
-     ["Built full-stack applications, APIs, and data pipelines for Typekit (RoR, Sinatra, JavaScript, Redis, MySQL, Hadoop, Hive).",
-      "Optimized Flash Player and AIR runtime for Android, focusing on battery, memory, and rendering performance."]),
+     ["Built full-stack applications, APIs, and data pipelines for Typekit.",
+      "Optimized Flash Player and AIR runtime on Android for battery, memory, and rendering performance."]),
 ]
 resume_exp = ""
 for title, org, loc, when, blurb, bullets in resume_roles:
@@ -805,11 +805,12 @@ resume_body = f'''<section style="border:none"><div class="wrap">
   <a class="back" href="index.html">← home</a>
   <p class="eyebrow">Résumé</p>
   <h1>Anupreet Walia</h1>
-  <p style="color:var(--muted);font-family:var(--mono);font-size:13.5px">San Mateo, CA · <a href="https://www.linkedin.com/in/anupreetwalia/">linkedin.com/in/anupreetwalia</a></p>
+  <p style="color:var(--muted);font-weight:600;margin-top:2px">Engineering Executive · Technical Co-Founder</p>
+  <p style="color:var(--muted);font-family:var(--mono);font-size:13.5px">San Mateo, CA · <a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a></p>
   <div class="btn-row"><a class="btn" href="assets/Anupreet_Walia_Resume_2026.pdf" download>Download PDF</a></div>
 
   <h2>Summary</h2>
-  <p>Technical co-founder and engineering executive. 17+ years building AI products from scratch and scaling teams and platforms. As CTO &amp; Co-Founder of Brevian AI, I set the product vision, designed the architecture, and built a production knowledge graph and multi-agent LLM system for enterprise sales intelligence. Scaled engineering orgs from founding teams to 100+ engineers across venture-backed startups (Sequoia, a16z, Y Combinator). Hands-on background in AI/ML systems, knowledge graphs, RAG, and agentic AI.</p>
+  <p>Engineering executive and technical founder with 17+ years building products and engineering organizations from 0→1 through scale. I lead product and engineering strategy, design the technical and organizational systems required to execute it, and remain hands-on when the work requires it. Experience across AI systems, developer platforms, distributed systems, and engineering organizations scaling to 100+ people.</p>
 
   <h2>Experience</h2>
   {resume_exp}
@@ -817,13 +818,17 @@ resume_body = f'''<section style="border:none"><div class="wrap">
   <h2>Education</h2>
   <p><strong>M.S., Computer Science</strong>, Georgia Institute of Technology. IRA Hardin Fellowship Recipient.</p>
 
-  <h2>Patents</h2>
-  <p>Genomic Network Service / Cross-Network Genomic Data User Interface (Helix). <a href="patents.html">See all patent numbers →</a></p>
-
   <h2>Technical depth</h2>
-  <p><strong>AI/ML Systems:</strong> LLM orchestration, multi-agent architectures, knowledge graphs, RAG/GraphRAG, vector search (OpenSearch), NER, agentic tool-use patterns, prompt engineering, TRT-LLM, vLLM.</p>
-  <p><strong>Infrastructure:</strong> Kubernetes, Python, Go, React, PostgreSQL, Redis, OpenSearch, Azure ML, AWS, GCP, SOC2, CI/CD.</p>
-  <p><strong>Leadership:</strong> Scaled orgs from 10 to 100+ engineers, 0-to-1 product vision and strategy, category creation, engineering ladder design, hiring frameworks, cross-functional product/engineering/GTM leadership.</p>
+  <p><strong>AI Systems:</strong> Multi-agent architectures, LLM orchestration, knowledge graphs, RAG/GraphRAG, retrieval and context engineering.</p>
+  <p><strong>Distributed Systems:</strong> Multi-tenant SaaS, data platforms, ML inference infrastructure, reliability and observability.</p>
+  <p><strong>Platforms:</strong> Developer platforms, APIs and SDKs, enterprise integrations, cloud infrastructure.</p>
+  <p><strong>Engineering Organizations:</strong> 0→1 teams, organization scaling, hiring systems, leveling, and engineering operating practices.</p>
+
+  <h2>Selected technical work</h2>
+  <p><strong><a href="research.html">BatchDAG</a></strong> — LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Deployed in production at Brevian. Preprint: <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a>.</p>
+  <p><strong><a href="writing/index.html">Brevian Engineering</a></strong> — Writing on context engineering, multi-agent harnesses, knowledge graphs, and the MCP intelligence layer.</p>
+  <p><strong><a href="patents.html">Patents</a></strong> — Six granted patents / applications from Helix on cross-network genomic data interfaces.</p>
+  <p><strong><a href="https://github.com/anusual">GitHub</a></strong> — Recent hands-on engineering work under @anusual, with earlier work under <a href="https://github.com/anupreet">@anupreet</a>.</p>
 </div></section>'''
 write("resume.html", page("Résumé · Anupreet Walia", resume_body, "resume", 0,
       "Résumé of Anupreet Walia, engineering executive and technical co-founder.",

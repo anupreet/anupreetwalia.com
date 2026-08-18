@@ -29,6 +29,7 @@ aws s3 sync "$SRC_DIR" "s3://$BUCKET" \
   --exclude "*.py" \
   --exclude "*.sh" \
   --exclude "README.md" \
+  --exclude "resume_print.html" \
   --exclude "*.bak" \
   --exclude ".DS_Store" \
   --exclude "Screenshot*" \
