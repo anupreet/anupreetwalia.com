@@ -7,7 +7,7 @@ VER = int(time.time())   # cache-busting stamp appended to asset URLs each build
 BASE = "https://anupreetwalia.com"   # canonical origin for SEO
 
 PERSON_LD = '''<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Anupreet Walia","url":"https://anupreetwalia.com","jobTitle":"CTO & Co-Founder","worksFor":{"@type":"Organization","name":"Brevian AI"},"description":"Engineering executive and technical co-founder. CTO & Co-Founder of Brevian AI. 17+ years building AI products and scaling teams across AI/ML systems, knowledge graphs, RAG, and agentic AI.","sameAs":["https://www.linkedin.com/in/anupreetwalia/","https://github.com/anusual","https://scholar.google.com/citations?user=_PfGUfcAAAAJ"],"address":{"@type":"PostalAddress","addressLocality":"San Mateo","addressRegion":"CA","addressCountry":"US"}}
+{"@context":"https://schema.org","@type":"Person","name":"Anupreet Walia","url":"https://anupreetwalia.com","jobTitle":"CTO & Co-Founder","worksFor":{"@type":"Organization","name":"Brevian AI"},"description":"Engineering executive and technical co-founder. CTO & Co-Founder of Brevian AI. 20+ years building AI products and scaling teams across AI/ML systems, knowledge graphs, RAG, and agentic AI.","sameAs":["https://www.linkedin.com/in/anupreetwalia/","https://github.com/anusual","https://scholar.google.com/citations?user=_PfGUfcAAAAJ"],"address":{"@type":"PostalAddress","addressLocality":"San Mateo","addressRegion":"CA","addressCountry":"US"}}
 </script>
 '''
 
@@ -132,7 +132,7 @@ home_body = f'''<header class="hero"><div class="wrap">
   <p class="eyebrow">Engineering executive · Technical co-founder</p>
   <h1>Anupreet Walia</h1>
   <p class="lede">I build AI products from scratch and scale the teams and platforms behind them. Currently CTO &amp; Co-Founder of Brevian AI.</p>
-  <p class="sub">17+ years across AI/ML systems, knowledge graphs, RAG, and agentic AI, from founding teams to orgs of 100+ engineers at venture-backed startups (Sequoia, a16z, Y Combinator). This is where my technical work, writing, research, and patents live in one place.</p>
+  <p class="sub">20+ years across AI/ML systems, knowledge graphs, RAG, and agentic AI, from founding teams to orgs of 100+ engineers at venture-backed startups (Sequoia, a16z, Y Combinator). This is where my technical work, writing, research, and patents live in one place.</p>
   <div class="btn-row">
     <a class="btn primary" href="research.html">Read BatchDAG →</a>
     <a class="btn" href="writing/index.html">Writing</a>
@@ -810,7 +810,7 @@ resume_body = f'''<section style="border:none"><div class="wrap">
   <div class="btn-row"><a class="btn" href="assets/Anupreet_Walia_Resume_2026.pdf" download>Download PDF</a></div>
 
   <h2>Summary</h2>
-  <p>Engineering executive and technical founder with 17+ years building products and engineering organizations from 0→1 through scale. I lead product and engineering strategy, design the technical and organizational systems required to execute it, and remain hands-on when the work requires it. Experience across AI systems, developer platforms, distributed systems, and engineering organizations scaling to 100+ people.</p>
+  <p>Engineering executive and technical founder with 20+ years building products and engineering organizations from 0→1 through scale. I lead product and engineering strategy, design the technical and organizational systems required to execute it, and remain hands-on when the work requires it. Experience across AI systems, developer platforms, distributed systems, and engineering organizations scaling to 100+ people.</p>
 
   <h2>Experience</h2>
   {resume_exp}
