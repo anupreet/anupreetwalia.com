@@ -827,7 +827,6 @@ writing_index = f'''<section style="border:none"><div class="wrap">
   <h1>Essays</h1>
   <p style="color:var(--muted);max-width:620px">Pieces on AI architecture, context engineering, building production multi-agent systems, and the craft of engineering.</p>
   <div class="post-list">{post_index_items}</div>
-  <p style="margin-top:40px"><a href="elsewhere.html">Published elsewhere: essays on the Brevian blog →</a></p>
 </div></section>'''
 elsewhere_posts = [
     ("From Prompt Loops to Multi-Agent Systems: Why the Harness Matters", "from-prompt-loops-to-multi-agent-systems"),
