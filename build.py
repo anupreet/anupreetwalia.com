@@ -405,7 +405,7 @@ As the dev loop expands from delivery to learning, the observations need to expa
     },
     {
       "slug": "from-delivery-to-learning",
-      "title": "From Delivery to Learning",
+      "title": "[WIP] From Delivery to Learning",
       "date": "Aug 18, 2026",
       "iso": "2026-08-18",
       "read": "5 min",
