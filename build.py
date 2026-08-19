@@ -194,8 +194,8 @@ posts = [
     {
       "slug": "observing-a-healthy-engineering-system",
       "title": "[WIP] Observing a Healthy Engineering System",
-      "date": "Aug 18, 2026",
-      "iso": "2026-08-18",
+      "date": "Aug 19, 2026",
+      "iso": "2026-08-19",
       "read": "6 min",
       "host": True,
       "first_here": True,
