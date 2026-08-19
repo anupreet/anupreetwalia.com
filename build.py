@@ -119,6 +119,7 @@ card_html = "\n".join(
     for tag,h,p,u in cards)
 
 links_external = [
+    ("Brevian: Essays on the Brevian blog", "writing/elsewhere.html"),
     ("Baseten: Introducing Baseten Self-hosted", "https://www.baseten.co/blog/baseten-self-hosted/"),
     ("Preset: Build and Deploy in SaaS-COSS", "https://preset.io/blog/build-and-deploy-in-saas-coss/"),
     ("Snapdocs: Women Leaders Who&#39;ve Scaled Startups", "https://www.builtincolorado.com/articles/women-leaders-scaled-startups"),
@@ -771,8 +772,6 @@ elsewhere_posts = [
     ("From Prompt Loops to Multi-Agent Systems: Why the Harness Matters", "from-prompt-loops-to-multi-agent-systems"),
     ("Context-Driven Design: A Design Pattern", "context-driven-design"),
     ("Building Reliable Prompts", "building-reliable-prompts"),
-    ("Live Copilots Will Be The New Norm", "live-copilots-will-be-the-new-norm"),
-    ("The Trends Shaping A New Era of B2B Sales", "sales-is-evolving-heres-what-comes-next"),
     ("What a Knowledge Engine Does That Conversation Intelligence Doesn't", "knowledge-engine-vs-conversation-intelligence"),
     ("Introducing Brevian MCP: What If You Could Ask Your Sales Data Anything?", "brevian-mcp-what-if"),
     ("Introducing Meeting Prep: AI-Generated Pre-Meeting Intelligence for Every Sales Conversation", "introducing-meeting-prep"),
