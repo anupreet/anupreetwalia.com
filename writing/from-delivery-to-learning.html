@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Delivery to Learning · Anupreet Walia</title>
+<meta name="description" content="If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the ">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/writing/from-delivery-to-learning.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="From Delivery to Learning · Anupreet Walia">
+<meta property="og:description" content="If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the ">
+<meta property="og:url" content="https://anupreetwalia.com/writing/from-delivery-to-learning.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="From Delivery to Learning · Anupreet Walia">
+<meta name="twitter:description" content="If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the ">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/styles.css?v=1787117176">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"From Delivery to Learning","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026-08-18","url":"https://anupreetwalia.com/writing/from-delivery-to-learning.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="../index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../index.html#work">work</a>
+    <a href="../writing/index.html" class="active">writing</a>
+    <a href="../research.html">research</a>
+    <a href="../patents.html">patents</a>
+    <a href="../resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<article><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <div class="post-meta">Aug 18, 2026 · 5 min read</div>
+  <h1>From Delivery to Learning</h1>
+  <p class="deck">If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the dev loop needs to extend from delivery to learning.</p>
+  
+  <p>If engineering can implement a feature 3x faster, but it still takes us the same amount of time to learn whether customers actually want it, have we captured the productivity gain we expected from AI?</p>
+<p>As engineering leaders, we spend a lot of time optimizing the dev loop - how quickly we can build, test and deploy. This loop is largely optimized around getting a feature into production. There is a lot of iteration inside that process, but "deployed successfully" is still a reasonable boundary for where engineering work on a feature ends.</p>
+<p>AI is making parts of that loop faster, particularly planning and implementation. Based on the old metrics, engineering output or throughput should be multiples of what it was - 3x today, with 10x as the promise. But the outcomes don't seem to have moved the same way.</p>
+<p>When this loop became faster, the real bottleneck moved to choosing what gets built and we call it "taste" or judgement.</p>
+<p>If we look back, when we were shipping CDs and the cost of bugs was high, we used to have a separate QA stage. As we moved to CI/CD, the cost of shipping and fixing bugs became lower and we shifted QA left. The same argument can be made now for product taste or judgement. If we truly want to benefit from the AI wave, we need to move this left, i.e. make it part of the dev loop.</p>
+<p>That means extending the development loop from <strong>delivery to learning</strong>.</p>
+<h3>Roadmaps are bets</h3>
+<p>In order to move part of product validation to the dev loop, we need to get crisp about why and how we choose what to build, which is historically represented as the roadmap. A product roadmap is a list of bets, and each bet carries one class that says why it is on the list. The class is not a description of the work but the reason we are doing the work now.</p>
+<p>To glance at the roadmap and know what we are investing in, some form of classification is needed. For this exercise, let's use these: Floor (keep the lights on), Moat (get harder to copy), Gate (open a closed door), Growth (turn arrivals into users), Monetize (turn usage into revenue), and Enabler (unlock what we ship next).</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>What the bet is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Floor</td>
+<td>Keep the lights on. Oncall, dependency upgrades, capacity, forced migrations, the bug backlog.</td>
+</tr>
+<tr>
+<td>Moat</td>
+<td>Make us harder to copy over time. Includes community and ecosystem work, since what other people build on top of us is the part that compounds.</td>
+</tr>
+<tr>
+<td>Gate</td>
+<td>Open a specific door that is closed today. A named customer, market, partner, or compliance requirement.</td>
+</tr>
+<tr>
+<td>Growth</td>
+<td>Move people from arriving to actually using the surface that will eventually be paid for.</td>
+</tr>
+<tr>
+<td>Monetize</td>
+<td>Convert usage that already exists into revenue.</td>
+</tr>
+<tr>
+<td>Enabler</td>
+<td>Unlock an internal capability we do not have yet, where the value is in what it lets us ship next.</td>
+</tr>
+</tbody>
+</table>
+<p>The class gives us the why. The bet still needs a hypothesis that says why now and what a good outcome looks like. Product owns choosing what bets we make (this rigor ain't changing) and why now. EPD (Engineering, Product, and Design) owns executing the bet until the bet plays out.</p>
+<p>As a running example, take a Gate bet: a capability that five named customers need before they can adopt the product.</p>
+<h3>Expanding the dev loop</h3>
+<p>The dev loop today looks roughly like:</p>
+<p><strong>Hypothesis → specification → build → test → deploy</strong></p>
+<p>There is already iteration inside this loop. Requirements change, designs change, engineers find constraints, and EPD makes decisions together.</p>
+<p>The boundary is still deployment.</p>
+<p>For that Gate bet, deployment tells us the capability exists and works. It doesn't tell us whether the customers activated it, whether they could use it, or whether something in the product prevented them from getting the value we expected.</p>
+<p>Those questions are often handled after the feature ships. We look at usage, collect customer feedback, decide what needs to change, prioritize the follow-up and bring another piece of work into the dev loop.</p>
+<p>AI makes the build part of that cycle cheaper. Leaving the rest of the cycle unchanged limits the gain to producing the first version faster.</p>
+<p>The larger loop is:</p>
+<p><strong>Hypothesis → specification → build → test → deploy → observe → learn → iterate</strong></p>
+<p>Activation, instrumentation, product acceptance and the first feedback loop become part of executing the bet.</p>
+<p>The engineering specification now contains the expected outcome alongside the feature requirements. For the Gate bet built for five customers, we know before implementation how those customers will get access, what we need to observe and what evidence tells us whether the gate actually opened.</p>
+<p>This is the same shift-left pattern we have used before. When QA was a separate stage, the engineering loop ended before quality was established. CI/CD made iteration cheaper and testing moved into the dev loop. AI makes implementation cheaper, and product acceptance and learning can move into the loop as well. AI helps on this side too - instrumenting the feature, synthesizing feedback, and analyzing usage are getting cheaper alongside implementation.</p>
+<p>Product still owns what bets we make and why now. Moving product acceptance left doesn't move product strategy to Engineering. It expands what EPD owns when executing the bet.</p>
+<h3>A delivered feature is not a resolved bet</h3>
+<p>Take the same Gate bet. We build the capability, ship it in two months and it works correctly. If none of the five customers use it, the bet failed but the feature was delivered.</p>
+<p>That result can still represent a healthy loop if we get the answer quickly enough to act on it. The loop ends when the bet has played out far enough to know what to do next. Success can mean adoption. It can also mean learning quickly that the hypothesis was wrong and stopping the investment.</p>
+<p>If implementation gets 10x faster but the time from making a bet to getting enough evidence to make the next decision stays the same, only one part of the loop got faster.</p>
+<p>The cycle to optimize is <strong>bet → evidence → next decision</strong>.</p>
+  <div class="author-box">
+    <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian.
+  </div>
+</div></article>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>
