@@ -201,10 +201,10 @@ posts = [
       "first_here": True,
       "image": "observing-engineering-system-header.png",
       "image_alt": "Three properties of a healthy engineering system: Efficiency (capacity allocation, bet predictability, delivery, deploy to evidence), Accuracy (works as built, works as expected by the customer, bet outcome vs expected) and Growth (team, usage and revenue grow without disproportionate engineering work).",
-      "deck": "The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three properties I look for: Efficiency, Accuracy and Growth.",
+      "deck": "A model for the engineering system — People, Architecture and Systems/Processes executing roadmap bets — and three properties to observe it by: Efficiency, Accuracy and Growth.",
       "md": """As engineering leaders, we track a lot of metrics. Deployment frequency, lead time, defects, uptime, MTTR, roadmap delivery, customer bugs, team health, etc.
 
-The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy.
+Most of these are easy to collect. On their own, they don't tell us whether the engineering system is healthy.
 
 I use a simple model for the engineering system.
 
