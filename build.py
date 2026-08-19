@@ -418,13 +418,13 @@ As coding agents increase the rate at which repositories evolve, the decisions n
       "image": "from-delivery-to-learning-header.png",
       "image_alt": "The dev loop extended from delivery to learning: hypothesis, specification, build, test, deploy, then observe, learn and iterate. The old boundary was deploy; executing the bet now includes activation, instrumentation and the first feedback loop.",
       "deck": "If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the dev loop needs to extend from delivery to learning.",
-      "md": """If engineering can implement a feature 3x faster, but it still takes us the same amount of time to learn whether customers actually want it, have we captured the productivity gain we expected from AI?
+      "md": """If engineering can implement a feature 3x faster, but it still takes us the same amount of time to learn whether customers want it, have we captured the productivity gain we expected from AI?
 
 As engineering leaders, we spend a lot of time optimizing the dev loop - how quickly we can build, test and deploy. This loop is largely optimized around getting a feature into production. There is a lot of iteration inside that process, but "deployed successfully" is still a reasonable boundary for where engineering work on a feature ends.
 
 AI is making parts of that loop faster, particularly planning and implementation. Based on the old metrics, engineering output or throughput should be multiples of what it was - 3x today, with 10x as the promise. But the outcomes don't seem to have moved the same way.
 
-When this loop became faster, the real bottleneck moved to choosing what gets built and we call it "taste" or judgement.
+When this loop became faster, the bottleneck moved to choosing what gets built, and we call it "taste" or judgement.
 
 If we look back, when we were shipping CDs and the cost of bugs was high, we used to have a separate QA stage. As we moved to CI/CD, the cost of shipping and fixing bugs became lower and we shifted QA left. The same argument can be made now for product taste or judgement. If we want to benefit from AI, we need to move this left, i.e. make it part of the dev loop.
 
@@ -575,7 +575,7 @@ Agents can make implementing a proposed architecture considerably faster, which 
 
 Feature design needs a broader scope.
 
-As implementation becomes faster, teams can build more features and more variations of a feature in the same amount of time. That increases the importance of being able to test those features cheaply and safely. If experimentation and rollout remain expensive, the organization simply moves the bottleneck from implementation to validation.
+As implementation becomes faster, teams can build more features and more variations of a feature in the same amount of time. That increases the importance of being able to test those features cheaply and safely. If experimentation and rollout remain expensive, the organization moves the bottleneck from implementation to validation.
 
 I would therefore extend the feature design interview through the rollout of the feature.
 
