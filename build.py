@@ -748,6 +748,67 @@ I'm still in that process. There are days it feels like I'm back. Days it still 
 
 You have to go closer. Even when it costs you the story you had about yourself.""",
     },
+    {
+      "slug": "building-reliable-prompts",
+      "title": "Building Reliable Prompts",
+      "date": "Jul 28, 2025",
+      "iso": "2025-07-28",
+      "read": "4 min",
+      "host": True,
+      "modified": True,
+      "deck": "Prompts held to production software standards: automatic optimization against curated datasets, guardrails for edge cases, and evals with runtime observability.",
+      "orig": "https://www.brevian.ai/resources/building-reliable-prompts",
+      "md": """Prompts that power production AI systems should be held to the same standards of reliability, observability and maintainability as any other software component.
+
+We learned this quickly after deploying our first prompts to production at Brevian. First, prompts are fickle and tightly coupled to the underlying model, and a prompt tuned for one model can degrade on the next. Second, prompts need to be designed for what good looks like: language models are good at generating content even at the expense of facts, and few-shot prompting with examples can backfire because the model imitates the pattern of the examples to the point of comical inaccuracy. Third, structured JSON output has come a long way, but the constraints your APIs have downstream still need to be reflected in the prompt explicitly.
+
+To manage this we follow a structured 3-Pass Rule when designing and deploying prompts. The process combines automatic optimization, guardrails, and continuous evaluation.
+
+### Pass 1: Automatic Prompt Optimization (APO)
+
+We begin with APO. A curated test dataset is created that contains a representative set of inputs along with their expected outputs and required formatting rules. The prompt is iteratively tuned against this dataset, using reinforcement learning, until it meets predefined success criteria across all test cases. The result is a prompt validated against real product use cases rather than ad hoc examples.
+
+### Pass 2: Guardrails and constraints
+
+After the initial optimization, guardrail instructions are added. These explicitly define constraints and expected behaviors, such as:
+
+- Maintaining output within a specified scope and tone.
+- Handling incomplete or ambiguous inputs by prompting for clarification.
+- Avoiding irrelevant, unsafe, or non-compliant responses.
+
+This pass is what makes the prompt behave predictably on unexpected and edge-case inputs.
+
+### Pass 3: Evals and runtime observability
+
+Finally, prompts are placed under evals: automated evaluation suites that verify outputs both during CI/CD and in the runtime environment. The evals compare live outputs against expected patterns, surface exceptions when hallucinations or format deviations are detected, and include dedicated edge-case inputs to identify regressions and model drift over time. Drift and unexpected behavior are detected before they reach end users.
+
+### The mapping to traditional engineering
+
+For engineers accustomed to traditional software systems, the 3-Pass Rule maps to established disciplines. In classical system engineering we want a system that is observable, testable and resilient: one that handles expected workloads correctly, fails gracefully under unexpected conditions, and provides clear signals when something is wrong. In practice we build that with strong validation test suites, well-defined interfaces, and thorough monitoring. The same principles apply to prompts.
+
+| Prompt engineering practice | Traditional engineering equivalent |
+| --- | --- |
+| Automatic Prompt Optimization (APO) | End-to-end test suites |
+| Guardrails, consistency checks and constraints | Exception handling and edge-case protection |
+| Evals and runtime checks | Observability and monitoring |
+| CI prompt tests (a subset of the APO dataset) | Unit tests in CI/CD |
+
+Applying these principles addresses the failure modes we see in production. Continuous evaluation highlights subtle shifts in model behavior. Outputs are checked against expected patterns, with deviations flagged. Guardrails and evals catch failure modes before they affect end users, and dedicated test inputs keep behavior consistent under stress conditions.
+
+Prompts evolve alongside models, datasets and user needs. The discipline that keeps other production systems reliable, validation against a dataset, constraints for the edge cases and observation in production, is what keeps prompts reliable as well.
+
+### References
+
+Teki, S. *Prompting is the New Programming Paradigm in the Age of AI*. Personal Blog, 2023. [Link](https://www.sundeepteki.org/advice/the-definitive-guide-to-prompt-engineering-from-principles-to-production)
+
+Prompt Engineering Guide. *Few-Shot Prompting*. PromptingGuide.ai, 2023. [Link](https://www.promptingguide.ai/techniques/fewshot)
+
+QED42. *Building Simple & Effective Prompt-Based Guardrails*. QED42 Insights, 2024. [Link](https://www.qed42.com/insights/building-simple-effective-prompt-based-guardrails)
+
+Humanloop. *Structured Outputs: Everything You Should Know*. Humanloop Blog, 2023. [Link](https://humanloop.com/blog/structured-outputs)
+
+Wolfe, C. *Automatic Prompt Optimization with Reinforcement Learning*. Substack, 2023. [Link](https://cameronrwolfe.substack.com/p/automatic-prompt-optimization)""",
+    },
 ]
 
 post_index_items = ""
@@ -771,17 +832,13 @@ writing_index = f'''<section style="border:none"><div class="wrap">
 elsewhere_posts = [
     ("From Prompt Loops to Multi-Agent Systems: Why the Harness Matters", "from-prompt-loops-to-multi-agent-systems"),
     ("Context-Driven Design: A Design Pattern", "context-driven-design"),
-    ("Building Reliable Prompts", "building-reliable-prompts"),
     ("What a Knowledge Engine Does That Conversation Intelligence Doesn't", "knowledge-engine-vs-conversation-intelligence"),
     ("Introducing Brevian MCP: What If You Could Ask Your Sales Data Anything?", "brevian-mcp-what-if"),
     ("Introducing Meeting Prep: AI-Generated Pre-Meeting Intelligence for Every Sales Conversation", "introducing-meeting-prep"),
-    ("Live Coaching: Real-Time Sales Intelligence During Every Conversation", "live-coaching-real-time-sales-intelligence"),
-    ("After-Call Coaching: What Should Have Been Said and Wasn't", "after-call-coaching-what-should-have-been-said"),
     ("Deal Review: Deal Analysis That Actually Changes Rep Behavior", "deal-review-ai-deal-analysis"),
     ("Pipeline Review: The Layer of Signal Your Pipeline Has Been Missing", "pipeline-review-ai-pipeline-health"),
     ("CRM Updates: Your Sales Methodology Should Live in Your CRM, Not Just Your Training Deck", "crm-updates-meddpicc-crm-automation"),
     ("Brevian Coaches the Deal, Not Just the Call", "brevian-coaches-the-deal-not-just-the-call"),
-    ("Practice the Call Before It Happens", "practice-the-call-before-it-happens"),
 ]
 elsewhere_items = "".join(f'''<div class="post-item">
       <h3><a href="https://www.brevian.ai/resources/{s}">{t} ↗</a></h3></div>\n''' for t, s in elsewhere_posts)

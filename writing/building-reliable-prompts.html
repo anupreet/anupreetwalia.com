@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building Reliable Prompts · Anupreet Walia</title>
+<meta name="description" content="Prompts held to production software standards: automatic optimization against curated datasets, guardrails for edge cases, and evals with runtime obse">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/writing/building-reliable-prompts.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="Building Reliable Prompts · Anupreet Walia">
+<meta property="og:description" content="Prompts held to production software standards: automatic optimization against curated datasets, guardrails for edge cases, and evals with runtime obse">
+<meta property="og:url" content="https://anupreetwalia.com/writing/building-reliable-prompts.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Reliable Prompts · Anupreet Walia">
+<meta name="twitter:description" content="Prompts held to production software standards: automatic optimization against curated datasets, guardrails for edge cases, and evals with runtime obse">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/styles.css?v=1787164955">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Building Reliable Prompts","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2025-07-28","url":"https://anupreetwalia.com/writing/building-reliable-prompts.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="../index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../index.html#work">work</a>
+    <a href="../writing/index.html" class="active">writing</a>
+    <a href="../research.html">research</a>
+    <a href="../patents.html">patents</a>
+    <a href="../resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<article><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <div class="post-meta">Jul 28, 2025 · 4 min read</div>
+  <h1>Building Reliable Prompts</h1>
+  <p class="deck">Prompts held to production software standards: automatic optimization against curated datasets, guardrails for edge cases, and evals with runtime observability.</p>
+  
+  <p>Prompts that power production AI systems should be held to the same standards of reliability, observability and maintainability as any other software component.</p>
+<p>We learned this quickly after deploying our first prompts to production at Brevian. First, prompts are fickle and tightly coupled to the underlying model, and a prompt tuned for one model can degrade on the next. Second, prompts need to be designed for what good looks like: language models are good at generating content even at the expense of facts, and few-shot prompting with examples can backfire because the model imitates the pattern of the examples to the point of comical inaccuracy. Third, structured JSON output has come a long way, but the constraints your APIs have downstream still need to be reflected in the prompt explicitly.</p>
+<p>To manage this we follow a structured 3-Pass Rule when designing and deploying prompts. The process combines automatic optimization, guardrails, and continuous evaluation.</p>
+<h3>Pass 1: Automatic Prompt Optimization (APO)</h3>
+<p>We begin with APO. A curated test dataset is created that contains a representative set of inputs along with their expected outputs and required formatting rules. The prompt is iteratively tuned against this dataset, using reinforcement learning, until it meets predefined success criteria across all test cases. The result is a prompt validated against real product use cases rather than ad hoc examples.</p>
+<h3>Pass 2: Guardrails and constraints</h3>
+<p>After the initial optimization, guardrail instructions are added. These explicitly define constraints and expected behaviors, such as:</p>
+<ul>
+<li>Maintaining output within a specified scope and tone.</li>
+<li>Handling incomplete or ambiguous inputs by prompting for clarification.</li>
+<li>Avoiding irrelevant, unsafe, or non-compliant responses.</li>
+</ul>
+<p>This pass is what makes the prompt behave predictably on unexpected and edge-case inputs.</p>
+<h3>Pass 3: Evals and runtime observability</h3>
+<p>Finally, prompts are placed under evals: automated evaluation suites that verify outputs both during CI/CD and in the runtime environment. The evals compare live outputs against expected patterns, surface exceptions when hallucinations or format deviations are detected, and include dedicated edge-case inputs to identify regressions and model drift over time. Drift and unexpected behavior are detected before they reach end users.</p>
+<h3>The mapping to traditional engineering</h3>
+<p>For engineers accustomed to traditional software systems, the 3-Pass Rule maps to established disciplines. In classical system engineering we want a system that is observable, testable and resilient: one that handles expected workloads correctly, fails gracefully under unexpected conditions, and provides clear signals when something is wrong. In practice we build that with strong validation test suites, well-defined interfaces, and thorough monitoring. The same principles apply to prompts.</p>
+<table>
+<thead>
+<tr>
+<th>Prompt engineering practice</th>
+<th>Traditional engineering equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic Prompt Optimization (APO)</td>
+<td>End-to-end test suites</td>
+</tr>
+<tr>
+<td>Guardrails, consistency checks and constraints</td>
+<td>Exception handling and edge-case protection</td>
+</tr>
+<tr>
+<td>Evals and runtime checks</td>
+<td>Observability and monitoring</td>
+</tr>
+<tr>
+<td>CI prompt tests (a subset of the APO dataset)</td>
+<td>Unit tests in CI/CD</td>
+</tr>
+</tbody>
+</table>
+<p>Applying these principles addresses the failure modes we see in production. Continuous evaluation highlights subtle shifts in model behavior. Outputs are checked against expected patterns, with deviations flagged. Guardrails and evals catch failure modes before they affect end users, and dedicated test inputs keep behavior consistent under stress conditions.</p>
+<p>Prompts evolve alongside models, datasets and user needs. The discipline that keeps other production systems reliable, validation against a dataset, constraints for the edge cases and observation in production, is what keeps prompts reliable as well.</p>
+<h3>References</h3>
+<p>Teki, S. <em>Prompting is the New Programming Paradigm in the Age of AI</em>. Personal Blog, 2023. <a href="https://www.sundeepteki.org/advice/the-definitive-guide-to-prompt-engineering-from-principles-to-production">Link</a></p>
+<p>Prompt Engineering Guide. <em>Few-Shot Prompting</em>. PromptingGuide.ai, 2023. <a href="https://www.promptingguide.ai/techniques/fewshot">Link</a></p>
+<p>QED42. <em>Building Simple &amp; Effective Prompt-Based Guardrails</em>. QED42 Insights, 2024. <a href="https://www.qed42.com/insights/building-simple-effective-prompt-based-guardrails">Link</a></p>
+<p>Humanloop. <em>Structured Outputs: Everything You Should Know</em>. Humanloop Blog, 2023. <a href="https://humanloop.com/blog/structured-outputs">Link</a></p>
+<p>Wolfe, C. <em>Automatic Prompt Optimization with Reinforcement Learning</em>. Substack, 2023. <a href="https://cameronrwolfe.substack.com/p/automatic-prompt-optimization">Link</a></p>
+  <div class="author-box">
+    <strong>Anupreet Walia</strong> is an engineering executive and technical co-founder. Modified from the original published on <a href="https://www.brevian.ai/resources/building-reliable-prompts">Brevian</a>.
+  </div>
+</div></article>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>
