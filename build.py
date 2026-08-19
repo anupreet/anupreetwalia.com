@@ -201,7 +201,7 @@ posts = [
       "first_here": True,
       "image": "observing-engineering-system-header.png",
       "image_alt": "Three properties of a healthy engineering system: Efficiency (capacity allocation, bet predictability, delivery, deploy to evidence), Accuracy (works as built, works as expected by the customer, bet outcome vs expected) and Growth (team, usage and revenue grow without disproportionate engineering work).",
-      "deck": "A model for the engineering system — People, Architecture and Systems/Processes executing roadmap bets — and three properties to observe it by: Efficiency, Accuracy and Growth.",
+      "deck": "The engineering system as People, Architecture and Systems/Processes executing roadmap bets, and three properties to observe it by: Efficiency, Accuracy and Growth.",
       "md": """As engineering leaders, we track a lot of metrics. Deployment frequency, lead time, defects, uptime, MTTR, roadmap delivery, customer bugs, team health, etc.
 
 Most of these are easy to collect. On their own, they don't tell us whether the engineering system is healthy.
@@ -498,7 +498,7 @@ The cycle to optimize is **bet → evidence → next decision**.""",
       "orig": "https://www.linkedin.com/posts/anupreetwalia_this-is-a-work-in-progress-i-have-been-ugcPost-7495263711993987072-557Z/",
       "image": "interview-loop-header.png",
       "image_alt": "What the coding interview stops measuring, and what it starts measuring instead: skills added (planning with an agent, context management, iteration, judging generated code, efficiency, rollout design, validation), skills that are no longer signal, and skills unchanged.",
-      "deck": "Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop — coding with agents, feature design through rollout — now that coding agents are part of the job.",
+      "deck": "Skill-based interviewing gives us a way to change hiring as engineering itself changes. How I am updating the loop (coding with agents, feature design through rollout) now that coding agents are part of the job.",
       "md": """I have always preferred skill-based interviews. The basic premise is that hiring should evaluate whether someone has the skills required to do the job, and the interview process should be designed specifically to collect that evidence.
 
 Structured interviewing has existed for a long time, and Google helped make the approach common in technology companies. One of the reasons for introducing more structure into interviewing was to reduce the effect of unconscious bias. If interviewers decide independently what they care about after meeting a candidate, decisions can easily become influenced by familiarity, background, communication style, or simply what an individual interviewer happens to value. Defining the skills, questions and evaluation criteria in advance creates a more consistent basis for making the decision.
@@ -741,86 +741,87 @@ The moment you introduce a second persistent context, or even subagent-backed to
 Choosing between a prompt loop, an orchestrator with subagent-tools, and a fully multi-agent system is a design decision. Whether any of those patterns actually runs well depends on the harness underneath: context construction, structured communication, termination, observability, budget enforcement. Investing in those primitives is what makes the move from a prompt loop to a multi-agent system tractable.""",
     },
     {
-      "slug": "brevian-mcp",
-      "title": "Introducing Brevian MCP: What If You Could Ask Your Sales Data Anything?",
-      "date": "May 11, 2026",
-      "read": "5 min",
-      "deck": "New intelligence, synthesized from every layer of your sales data, delivered as operational playbooks you can act on this week.",
-      "orig": "https://www.brevian.ai/resources/brevian-mcp-what-if",
-      "md": """**Not search results. Not dashboards. New intelligence, synthesized from every layer of your sales data.**
+      "slug": "why-rag-is-not-enough",
+      "title": "Why RAG Is Not Enough",
+      "date": "Aug 14, 2026",
+      "iso": "2026-08-14",
+      "read": "7 min",
+      "host": True,
+      "deck": "RAG answers retrieval questions. Deal intelligence needs reasoning over relationships, state, lens and access control, and that requires a knowledge graph.",
+      "orig": "https://www.brevian.ai/resources/why-rag-is-not-enough-revenue-intelligence",
+      "md": """Most Revenue Intelligence tools today are built using RAG.
 
-A sales leader sat down with Claude last week, connected to Brevian MCP, and typed a question:
+Retrieval-Augmented Generation was a genuine architectural step forward. By grounding language model outputs in external document corpora rather than parametric memory alone, RAG addressed hallucination and knowledge staleness in a practical, deployable way. The original [Lewis et al. (2020) paper](https://arxiv.org/abs/2005.11401) that coined the term demonstrated strong gains on knowledge-intensive tasks, and the pattern spread quickly across enterprise software. Most AI deployments in sales, HR, and support built on top of it.
 
-> "Find meetings attached to lost opps where a competitor was in place and the client revealed their renewal date to us. Table with opp, owner, competitor, and competitor renewal date."
+The problem is not that RAG does not work. It is that RAG was designed for retrieval questions, and revenue intelligence requires answering reasoning questions. Those are different problems, and conflating them is where most enterprise AI deployments in sales quietly break down.
 
-What came back was not a list of deals. It was a competitive renewal calendar. Eight opportunities, each with the specific competitor in place, the exact renewal date the prospect mentioned on a call, and the transcript-verified quote where they said it. The output included outreach timing recommendations: which deals have a re-engagement window opening now, which ones to queue for next quarter, and which ones to skip because the prospect just signed a fresh three-year contract with the incumbent.
+The retrieval question is: given a query, find the most relevant content. RAG solves this well. The reasoning question is harder: given everything that has happened in this deal, what does it mean and what should happen next? That requires not just finding relevant content, but understanding the relationships between entities, tracking how context evolves across time, and connecting what a prospect said three weeks ago to what a rep should do before Thursday's call. RAG was never designed to do that, and it shows.
 
-That calendar did not exist anywhere in the CRM. Nobody had logged competitor renewal dates as a structured field. The intelligence was assembled in seconds from signals scattered across months of recorded conversations, matched to deal records, and organized into something a team could execute against immediately.
+### What RAG Is Actually Doing
 
-That is what Brevian MCP does. And it is live today.
+A standard RAG pipeline has three stages: documents are chunked and embedded into a vector index, a query retrieves the chunks with the highest semantic similarity, and a language model generates a response conditioned on those chunks. The [ACM survey on GraphRAG methodologies (2024)](https://dl.acm.org/doi/10.1145/3777378) identifies three structural failures in this approach for complex reasoning tasks: it neglects relationships between entities, it loses global context because only a subset of documents is retrieved at a time, and it produces what the authors call the "lost in the middle" problem where relevant information buried in retrieved context gets ignored during generation.
 
-### The Question That Changes Everything
+For a static knowledge base, these are manageable problems. For a system trying to reason over a live sales deal, they are fundamental.
 
-Every sales leader carries a mental list of questions they would love to answer but never have time to research. The kind that require pulling CRM data, cross-referencing meeting records, reading transcripts, checking coaching reports, and assembling it all into something usable. An afternoon of work, minimum. The high-value questions that are not easily answerable but could unlock important strategies.
+### The Relationship Problem in Sales
 
-Brevian MCP eliminates that tradeoff. It connects your full Brevian intelligence surface to Claude, ChatGPT, and any MCP-compatible AI platform. Not as a data feed. As an intelligence layer that an AI agent can reason across, combining signals from your CRM, your transcripts, your coaching data, and your meeting history to produce insights that have never existed before.
+A CRM record is not a document. A stakeholder's engagement pattern across six meetings is not a document. The connection between a pain a prospect surfaced in week two, an objection they raised in week four, and the proof point that addresses both is not a semantic similarity problem. It is a graph traversal problem: find the relationship between these entities and reason across it.
 
-### From Question to Playbook in Seconds
+Research on [KG-RAG models (Scientific Reports, 2025)](https://www.nature.com/articles/s41598-025-21222-z) confirms that traditional RAG methods, which rely primarily on unstructured text corpora, are limited in their ability to handle complex relationships and perform multi-hop reasoning. In sales, multi-hop reasoning is the baseline requirement. Every useful pre-meeting briefing, qualification audit, and risk assessment requires connecting what was said to what it means for deal structure, which requires an architecture that understands relationships, not just text similarity.
 
-Here is what that looks like when you push it further. A sales leader asked:
+This is why [Microsoft's GraphRAG (2024)](https://microsoft.github.io/graphrag/) shifted the conversation. Rather than treating documents as flat text, GraphRAG builds entity-relationship graphs that enable theme-level queries with full traceability. The research example, querying supplier quality issues across relationships and time, is structurally identical to what revenue intelligence requires: querying deal health across stakeholders, qualification dimensions, and conversation history simultaneously.
 
-> "Find non-renewal lost opps from the last year, over $20,000, where meetings focused on a core product line. Rank by most promising re-engagement using the coaching scoring system. Top 20 with opp, owner, why it is promising, and re-engagement advice."
+### The Statefulness Problem
 
-What came back was a twenty-deal resurrection playbook. Not a sorted list. A scored, ranked analysis.
+RAG retrieves at query time and stops. Each retrieval is stateless: it has no memory of prior retrievals and no ability to track how context has evolved across interactions. [Research on hybrid retrieval (Preprints.org, 2025)](https://www.preprints.org/manuscript/202512.0359) confirms that dense vectors are complemented by knowledge graphs precisely for structured contexts, because graph structures persist relationships across time in a way that vector indexes do not.
 
-The system built a four-dimension scoring framework on the fly: buyer commitment signals, active blockers (how defined and resolvable they are), buying-process state at time of loss, and champion strength. Each deal scored 1 to 3 on every dimension, max 12. The top-ranked deal scored a perfect 12. The customer had said "this is a lock" on a recorded call, quotes had been generated, end-of-quarter credits applied, and they were asking for start dates.
+In sales this matters acutely. A deal is not a single document: it is a sequence of interactions where each one changes the meaning of the ones before it. A champion who attended every call in weeks one through four and then missed weeks five and six is not surfaced by a similarity search. It requires a persistent structure that tracks engagement patterns over time and flags the deviation. The same applies to qualification drift, evolving objections, and changing stakeholder composition. None of this is a retrieval problem. All of it is a state management problem.
 
-Every deal in the table came with two things: a one-sentence explanation of why it is promising, grounded in specific transcript evidence, and a one-sentence re-engagement recommendation tailored to that deal's situation.
+### The Lens Problem
 
-But the system did something else nobody asked for. It removed three deals that looked strong on CRM data but whose transcripts revealed disqualifying signals. One prospect had committed to a competitor on a recorded call. Another had gone dark on a board-approval meeting. A third had explicitly pushed the decision to next fiscal year due to budget cuts. The AI read the transcripts, identified the signals, and pulled those deals from the ranked list before presenting it.
+Even when RAG retrieves correctly, it retrieves without context about why. A rep asking "what should I cover in this meeting" receives chunks most semantically similar to that query, not chunks most relevant to the specific deal state, the specific stakeholder profile, and the specific methodology gaps that define this conversation.
 
-And it flagged a data quality issue: twelve of the twenty candidates had no indexed transcript content, which capped their scores. The system told you exactly where its confidence was high and where it was limited by coverage gaps.
+Brevian's architecture addresses this through what the product team describes as a lens constraint: the deal intelligence layer does not retrieve product knowledge generically, it queries everything from the lens of the conversation and the CRM. The distinction matters because the same product capability is more or less relevant depending on what has already been confirmed, what risks have been flagged, and where the deal is in the qualification framework. A flat retrieval system has no way to apply that constraint. A structured knowledge graph does.
 
-That entire output — the scoring methodology, the ranked table, the disqualifications, the data quality caveat — was generated in the time it takes to read this paragraph.
+### The Access Control Problem
 
-### What Just Happened
+One operational dimension that rarely surfaces in technical RAG discussions is content classification. [Research on naive RAG systems (MDPI, 2025)](https://www.mdpi.com/2079-9292/14/11/2102) identifies retrieval inefficiencies, semantic mismatches, and context fragmentation as persistent production problems. But in enterprise sales there is a harder issue: not all content should be retrieved in all contexts. A pricing document, an internal battlecard, and a customer-safe case study all live in the same corpus, but surfacing the wrong one in the wrong context has real consequences.
 
-An AI agent just did the work of a senior sales analyst. It filtered your pipeline. It read your transcripts. It scored your deals using signals from coaching data. It synthesized a prioritized playbook with specific, actionable recommendations for each opportunity. It identified and removed false positives. It told you where the data was strong and where it was thin.
+RAG retrieves by semantic relevance. It does not natively understand the difference between internal knowledge and external-safe assets. That distinction needs to be a first-class property of the architecture, with content classified not just by what it says but by what it is and who should see it. A knowledge graph that treats asset classification as a node property can enforce this at query time. A flat vector index cannot.
 
-The playbook it produced has never existed in any system. No dashboard generates it. No report template covers it. It was created in the space between the question and the answer, because for the first time, an AI agent could reason across every layer of your sales intelligence simultaneously.
+### What Changes When the Architecture Changes
 
-That is the shift. Not better search. Not faster dashboards. The ability to ask a question your organization has never asked before and get back operational intelligence you can act on today.
+The difference between RAG and a knowledge graph is not primarily about accuracy or recall. It is about what kinds of questions the system can answer.
 
-### Why MCP Makes This Possible
+RAG answers: what content is most relevant to this query? A knowledge graph answers: given everything we know about this deal, this prospect, and this methodology, what is the most important thing that needs to happen next? Those are different questions. The first is a retrieval problem. The second is a reasoning problem. And in enterprise sales, the second is the one that determines whether a deal closes.
 
-MCP (Model Context Protocol) is the open standard AI platforms adopted in 2025 for connecting assistants to external tools. Claude, ChatGPT, Cursor, and a growing list of platforms all speak it. One server, one authentication model, and every AI platform your team uses gets access to the same intelligence layer.
+When the architecture is built around relationships rather than retrieval, the outputs change category entirely. The intelligence that surfaces before a meeting is not the documents most similar to the meeting topic, but a structured assessment of where the deal stands, what has been confirmed, what gaps remain, and what the specific questions are that will advance it. The pipeline view that surfaces on Monday morning is not a list of records sorted by close date, but a scored assessment of each deal's structural integrity with a specific action for each one that needs attention before the week is out.
 
-Brevian has spent years building derived intelligence on top of raw sales data. Deal reports with scored dimensions and timestamped evidence. Qualification tracking across every conversation. Semantic search that understands what a conversation is about. Stakeholder engagement signals. MCP is what opens all of that to any AI agent, so it can combine those signals in ways we never pre-designed and produce insights we never anticipated.
+Retrieval is a component of that architecture. It is not the architecture.
 
-The queries in this post were not features we built. They were questions a sales leader asked. The intelligence was generated on the fly. That is the point.
+ Learn more at*[*brevian.ai*](https://www.brevian.ai)*.*
 
-### Five Minutes to Your First Question
+### FAQ
 
-Mint a Personal Access Token in Brevian's settings, add Brevian as a custom connector in Claude or ChatGPT, and paste the token when prompted. Your full intelligence surface goes live.
+**What is Retrieval-Augmented Generation (RAG)?**
 
-Security ships with the product. Every token hashed at rest. Every query audited. Access scoped to user, organization, and workspace. Token revocation cascades instantly to every derived session. Phase 1 is read-only by design.
+RAG is an AI architecture that combines a language model with an external document retrieval system, allowing outputs to be grounded in a specific corpus rather than the model's training data alone. It was introduced by [Lewis et al. (2020)](https://arxiv.org/abs/2005.11401) and has become the dominant pattern for enterprise AI deployments in search, Q&A, and knowledge management.
 
-### Your Questions, Not Ours
+**Why does RAG fall short for sales intelligence specifically?**
 
-The competitive renewal calendar and the resurrection playbook are two examples. Your team will have hundreds of their own.
+RAG is designed for retrieval questions: given a query, find the most relevant content. Sales intelligence requires answering reasoning questions: given everything that has happened in this deal, what does it mean and what needs to happen next? The [ACM survey on GraphRAG (2024)](https://dl.acm.org/doi/10.1145/3777378) identifies three structural failures in flat RAG for this kind of task: it neglects entity relationships, loses global context, and cannot perform multi-hop reasoning across retrieved chunks.
 
-What if you could identify every deal where a champion went silent and cross-reference it with their last coaching report? What if you could find every meeting where your team's competitive positioning diverged from the trained battlecard and rank those gaps by deal value? What if you could map every objection a prospect raised across six months of calls and see which ones your team handled and which ones they never addressed?
+**What is a knowledge graph and how is it different from a vector index?**
 
-Every one of those produces intelligence that does not exist until the question is asked. That is what Brevian MCP unlocks. And the best questions will be the ones we have not thought of yet.""",
-    },
-    {
-      "slug": "knowledge-engine-vs-conversation-intelligence",
-      "title": "What a Knowledge Engine Does That Conversation Intelligence Doesn't",
-      "date": "Mar 10, 2026",
-      "read": "5 min",
-      "deck": "Most sales managers have more call recordings than they have time to watch. That is not an information problem. It is a structure problem.",
-      "orig": "https://www.brevian.ai/resources/knowledge-engine-vs-conversation-intelligence",
-      "md": "",
+A vector index represents documents as embeddings and retrieves by semantic similarity. A knowledge graph represents entities and the relationships between them, enabling the system to traverse connections and reason across multiple hops. For revenue intelligence, the relevant entities are products, features, pain points, stakeholders, objections, and qualification dimensions, and the relationships between them are what carry the intelligence.
+
+**What is GraphRAG and how does it relate to Brevian's approach?**
+
+[GraphRAG, open-sourced by Microsoft in 2024](https://microsoft.github.io/graphrag/), demonstrated that building entity-relationship graphs on top of document corpora dramatically improves reasoning capabilities for complex queries. Brevian's Knowledge Engine extends this principle specifically for the sales domain: the graph is built around the entities and relationships that determine deal outcomes, and the output is forward-looking action rather than retrieved content.
+
+**What is the access control limitation in standard RAG for enterprise sales?**
+
+Standard RAG retrieves by semantic relevance without natively distinguishing between internal and external-safe content. In sales, this creates risk: pricing documents, battlecards, and customer-safe assets coexist in the same corpus. A knowledge graph that treats content classification as a node property can enforce access control at query time, surfacing the right content to the right person in the right context.""",
     },
     {
       "slug": "zero-error-tolerance",
@@ -1121,10 +1122,10 @@ resume_body = f'''<section style="border:none"><div class="wrap">
   <p><strong>Engineering Organizations:</strong> 0→1 teams, organization scaling, hiring systems, leveling, and engineering operating practices.</p>
 
   <h2>Selected technical work</h2>
-  <p><strong><a href="research.html">BatchDAG</a></strong> — LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Deployed in production at Brevian. Preprint: <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a>.</p>
-  <p><strong><a href="writing/index.html">Brevian Engineering</a></strong> — Writing on context engineering, multi-agent harnesses, knowledge graphs, and the MCP intelligence layer.</p>
-  <p><strong><a href="patents.html">Patents</a></strong> — Six granted patents / applications from Helix on cross-network genomic data interfaces.</p>
-  <p><strong><a href="https://github.com/anusual">GitHub</a></strong> — Recent hands-on engineering work under @anusual, with earlier work under <a href="https://github.com/anupreet">@anupreet</a>.</p>
+  <p><strong><a href="research.html">BatchDAG</a></strong>: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Deployed in production at Brevian. Preprint: <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a>.</p>
+  <p><strong><a href="writing/index.html">Brevian Engineering</a></strong>: Writing on context engineering, multi-agent harnesses, knowledge graphs, and the MCP intelligence layer.</p>
+  <p><strong><a href="patents.html">Patents</a></strong>: Six granted patents / applications from Helix on cross-network genomic data interfaces.</p>
+  <p><strong><a href="https://github.com/anusual">GitHub</a></strong>: Recent hands-on engineering work under @anusual, with earlier work under <a href="https://github.com/anupreet">@anupreet</a>.</p>
 </div></section>'''
 write("resume.html", page("Résumé · Anupreet Walia", resume_body, "resume", 0,
       "Résumé of Anupreet Walia, engineering executive and technical co-founder.",
