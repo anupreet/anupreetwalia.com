@@ -110,7 +110,7 @@ role_html = "\n".join(
 
 cards = [
     ("Paper", "BatchDAG", "LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Deployed in production at Brevian.", "research.html"),
-    ("Writing", "Brevian Engineering", "Essays on context engineering, multi-agent harnesses, and the MCP intelligence layer.", "writing/index.html"),
+    ("Writing", "Essays", "Essays on AI architecture, context engineering, multi-agent systems and engineering leadership.", "writing/index.html"),
     ("Patents", "Genomic Data UI", "Six granted patents / applications from Helix on cross-network genomic data interfaces.", "patents.html"),
     ("Profile", "Google Scholar", "Publications and citations.", "https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en"),
 ]
@@ -608,139 +608,6 @@ The process for changing the interview loop should remain the same. Look at the 
 That is the useful part of a skill-based interview system. It gives us a way to change hiring as engineering itself changes without having to reinvent how we think about hiring each time.""",
     },
     {
-      "slug": "context-driven-design",
-      "title": "Context-Driven Design: A Design Pattern",
-      "date": "Jul 28, 2025",
-      "read": "5 min",
-      "deck": "Context-Driven Design treats context assembly as a first-class architectural concern: assembling the right working set of information at the moment of inference to build reliable LLM applications.",
-      "orig": "https://www.brevian.ai/resources/context-driven-design",
-      "md": """## From Prompts to Context Engineering: Why LLM Applications Need a New Design Paradigm
-
-### Background
-
-Large language models (LLMs) are transforming the way we build software, but their output quality is directly tied to the context they are given at inference time. Unlike traditional systems that operate solely on explicit parameters or static code, LLM-based applications rely on a dynamic, composite input — what we call context — to reason effectively. As these systems move from experimental prototypes to production-grade deployments, a gap has emerged as to how context should be assembled and delivered.
-
-### Introducing Context-Driven Design
-
-I see Context-Driven Design as a new, emerging design pattern specifically for LLM-powered systems as we go deeper into context engineering as a field of study. Existing design paradigms like Object-Oriented Design and Domain-Driven Design focus on how to structure code and manage domain models, but they do not address the unique runtime requirements of an LLM. In these systems, the model's reasoning quality depends on a transient working set of information — retrieved knowledge, rules, and interaction history — streamed into the model at inference time. Without a deliberate method to curate and structure this input, applications suffer from degraded accuracy, higher latency, and unpredictable outputs.
-
-Context-Driven Design fills this gap by treating context assembly as a first-class architectural concern, one which focuses on assembling the right working set of information at the moment of inference to build reliable LLM applications.
-
-### What Context Includes
-
-Context is far more than the prompt a user types. It is a structured working set that includes retrieved knowledge chunks from a retrieval-augmented generation (RAG) pipeline, domain-specific facts, operational rules and guardrails, prior interaction history, and the immediate instructions provided in the prompt itself. Each of these components contributes signals that the model draws on to produce its response. Done well, this enables the model to generate accurate and grounded outputs. Done poorly, it leads to irrelevant answers, degraded accuracy, and unpredictable behavior.
-
-### How LLMs Process Context
-
-To design this context effectively, it helps to understand how an LLM internally processes information. Modern transformer-based models maintain a key–value (KV) cache during inference. Every processed token is stored as a pair of key and value vectors, allowing the model to attend to prior tokens without recomputing them at every step.
-
-Conceptually, this cache is the model's short-term working memory. By feeding the model the right sequence of tokens, we are essentially deciding what gets written into that cache.
-
-### Why Context Must Be Balanced
-
-The need for context arises because the LLM itself has no persistent knowledge beyond its pretrained parameters. It only "knows" what is in the current KV cache. To reason about a domain, we must populate the cache with relevant facts, prior conversation turns, and retrieval results.
-
-However, this is a balancing act. Supplying too much data can overwhelm the model, increase latency, and dilute attention across low-value tokens. Supplying less relevant or contradictory data leads to what can be described as context poisoning: misleading entries in the cache that the model might rely on, resulting in incoherent or incorrect outputs. Supplying too little data, on the other hand, forces the model to guess, which also reduces accuracy and increases hallucinations.
-
-### Intention-Driven Design
-
-The practical implication is that context must be constructed deliberately. Every token included should have a clear purpose. Retrieval pipelines must rank and filter chunks to ensure only high-value content is surfaced. Domain rules and compliance constraints should be encoded in a way that is concise and unambiguous. Prior conversation history should be trimmed to include only the parts that truly influence the current request. Context is not an arbitrary concatenation of text but a curated and testable artifact that directly determines what resides in the KV cache at inference time.
-
-### Comparing to Established Design Methodologies
-
-Traditional software engineering disciplines already offer patterns for structuring logic and data. Object-Oriented Design (OOD) decomposes systems into objects that encapsulate state and behavior. OOD excels at modeling stable domain concepts and relationships, guiding developers to create modular, reusable components.
-
-Context-Driven Design differs in focus and granularity. While OOD shapes how code is structured, Context-Driven Design shapes what information is surfaced to a reasoning engine at runtime. In an OOD system, the central question is: which class or method should handle this responsibility? In a Context-Driven system, the question becomes: which pieces of information should populate the model's working memory right now to achieve accurate reasoning? Context-Driven Design complements existing paradigms by layering a dynamic knowledge assembly process on top of proven software structures.
-
-### Dynamic Application of Context
-
-Other methodologies like Domain-Driven Design (DDD) emphasize creating ubiquitous language and bounded contexts to align code with business domains. Context-Driven Design borrows from that idea but applies it dynamically: instead of building static models that live in source code, we build and update a transient context payload that informs an LLM on demand.
-
-Rather than replacing established methodologies, Context-Driven Design complements them. You still benefit from solid OOD principles in the backend systems that manage storage, retrieval, and orchestration. Those systems supply the components — knowledge chunks, rules, histories — that feed into the context. But the last mile, the assembly of that information into a carefully managed KV cache, is where Context-Driven Design defines a new layer of architectural responsibility.
-
-### Looking Ahead
-
-As systems evolve, this approach could become the backbone of modern LLM architectures. Our early implementations treated prompts as static blocks of text, but production systems now dynamically assemble context at runtime. They monitor output quality, refine retrieval logic through feedback loops, and adjust the composition of context over time. Guardrails are encoded as part of the context itself, rather than being bolted on as post-processing. The result is an application that not only uses the model's capabilities but also respects its operational constraints.
-
-### Conclusion
-
-Treating context as a first-class data structure leads to predictable behavior, lower latency, and reduced hallucination. By thinking in terms of how each piece of information populates the KV cache, architects can ensure that the model's limited working memory is filled with only the most relevant tokens. In doing so, they build systems that are not just powered by LLMs but are designed to make the most of them — systems that are aligned, efficient, and ready for real-world use.""",
-    },
-    {
-      "slug": "from-prompt-loops-to-multi-agent-systems",
-      "title": "From Prompt Loops to Multi-Agent Systems: Why the Harness Matters",
-      "date": "Jun 3, 2026",
-      "read": "6 min",
-      "deck": "Where the line between a prompt loop and a multi-agent system actually sits, and what that implies for the harness you have to build underneath.",
-      "orig": "https://www.brevian.ai/resources/from-prompt-loops-to-multi-agent-systems",
-      "md": """*Based on learnings from building Brevian.*
-
-This post works through where the line between a prompt loop and a multi-agent system actually sits, and what that implies for what you have to build to move from one to the other.
-
-### Defining the two
-
-A prompt loop is one LLM context, iterating. The model thinks, calls a tool, reads the result, thinks again. One conversation, one growing context, until it terminates.
-
-A multi-agent system has multiple LLM contexts that coordinate. Each has its own history, role, and state, and they exchange information somehow: messages, handoffs, or shared artifacts.
-
-The follow-up question is what counts as an "agent." If a prompt loop can call tools, and one of those tools happens to wrap an LLM call internally, is that a multi-agent system?
-
-### Tools vs. agents
-
-A tool is a deterministic function with a fixed code path and a predictable result. An agent is an LLM loop with its own reasoning and, usually, its own tools.
-
-From the caller's perspective, the two are interchangeable. You invoke `research_topic(query)` and you get structured output back. Whether `research_topic` is a Python function calling an API or a full LLM loop with its own scratchpad doesn't matter to the orchestrator.
-
-That symmetry lets you build an orchestrator that sees a flat list of tools, where some of those tools happen to do LLM reasoning internally. The orchestrator's code stays simple. The subagent's context, intermediate tool calls, and scratch work never enter the orchestrator. Only the final result comes back.
-
-Which raises the next question. If the orchestrator can't tell the difference, is this a multi-agent system or a prompt loop?
-
-### Where the actual line is
-
-The cleaner distinction isn't tools vs. agents. It's how many LLM contexts are involved, and whether they persist.
-
-One LLM loop calling deterministic tools is a prompt loop. One LLM loop calling tools that wrap one-shot LLM calls is also a prompt loop. The subagent's context is ephemeral; it exists for one call and disappears. The orchestrator is the only persistent mind.
-
-It becomes multi-agent when there are multiple LLM loops with their own ongoing state, coordinating across turns. A critic that remembers prior critiques. Agents that hand off control with their own state. Parallel agents whose intermediate states need to merge.
-
-The orchestrator-worker pattern sits right on this line. It gets called "multi-agent" because subagents do reasoning, but architecturally it behaves like a prompt loop with rich tools.
-
-### Which side to build on
-
-If the steps are known and deterministic, write a tool. If the steps require judgment, exploration, or chaining multiple actions, write an agent. If you'd write it as a function in normal code, it's a tool. If you'd write it as a prompt, it's an agent.
-
-Default to tools. Every agent boundary adds latency, cost, and a new failure mode. Reach for a subagent only when the work needs reasoning the orchestrator shouldn't be doing itself: context isolation, a specialized prompt, parallel exploration.
-
-A consequence of this is that work that gets called "multi-agent" can often be built as a prompt loop with subagent-backed tools. That keeps the orchestrator simple while still isolating context and specializing prompts per subtask.
-
-### Orchestration patterns
-
-When you do need multiple agents coordinating, a few patterns recur.
-
-- **Orchestrator-worker.** A lead agent decomposes the task, dispatches to stateless workers, and synthesizes results. This is the orchestrator-with-subagent-tools pattern above.
-- **Pipeline.** Agents run in sequence, each transforming the previous output. Simple and predictable, with no backtracking. If step three reveals step one was wrong, there is no way back.
-- **Parallel fan-out.** Independent subtasks run concurrently, then merge. Good for embarrassingly parallel work. The cost is duplicated effort and merge conflicts.
-- **Debate or critic loops.** A proposer and a critic iterate until convergence, or several solvers compete and a judge picks. Improves quality on reasoning-heavy work at significant token cost.
-- **Blackboard.** Agents read and write a shared artifact instead of messaging each other. Useful when many contributors update one output. Needs conflict resolution.
-- **Event-driven handoff.** Agents trigger each other based on conditions. Closer to a workflow engine than a conversation.
-
-### Why the harness is what you're really building
-
-The moment you introduce a second persistent context, or even subagent-backed tools doing real work, the harness has to do things the simple loop didn't need.
-
-- **Context construction per agent.** Each subagent should get the minimum context to do its job. Passing the orchestrator's full transcript into every worker burns the token budget. The harness needs a way to distill state and build per-agent briefs from a shared store, rather than threading history through call stacks.
-- **Structured I/O between agents.** Free-form text between agents drifts and gets misinterpreted. Typed inputs and outputs, schema validation, and retry-on-malformed-output belong in the harness, not in the prompt.
-- **Termination.** Loops without stop conditions run forever. Every subagent needs max iterations, token budgets, timeouts, and explicit "done" signals, enforced from outside.
-- **Error handling.** Workers fail. The orchestrator needs retry, fallback, and escalation logic. None of this comes from the model.
-- **Observability.** A single prompt loop produces one readable trace. A multi-agent system produces a tree of interleaved calls. Per-agent traces with parent-child relationships intact are what make it debuggable.
-- **Concurrency.** Parallel fan-out is only useful if the harness can actually run agents in parallel, collect results, and merge them without races in shared state.
-- **Budget enforcement.** One runaway subagent can burn a quota quickly. Per-call, per-agent, and per-task limits belong in the harness.
-
-### The takeaway
-
-Choosing between a prompt loop, an orchestrator with subagent-tools, and a fully multi-agent system is a design decision. Whether any of those patterns actually runs well depends on the harness underneath: context construction, structured communication, termination, observability, budget enforcement. Investing in those primitives is what makes the move from a prompt loop to a multi-agent system tractable.""",
-    },
-    {
       "slug": "why-rag-is-not-enough",
       "title": "Why RAG Is Not Enough",
       "date": "Aug 14, 2026",
@@ -898,7 +765,37 @@ writing_index = f'''<section style="border:none"><div class="wrap">
   <h1>Essays</h1>
   <p style="color:var(--muted);max-width:620px">Pieces on AI architecture, context engineering, building production multi-agent systems, and the craft of engineering.</p>
   <div class="post-list">{post_index_items}</div>
+  <p style="margin-top:40px"><a href="elsewhere.html">Published elsewhere: essays on the Brevian blog →</a></p>
 </div></section>'''
+elsewhere_posts = [
+    ("From Prompt Loops to Multi-Agent Systems: Why the Harness Matters", "from-prompt-loops-to-multi-agent-systems"),
+    ("Context-Driven Design: A Design Pattern", "context-driven-design"),
+    ("Building Reliable Prompts", "building-reliable-prompts"),
+    ("Live Copilots Will Be The New Norm", "live-copilots-will-be-the-new-norm"),
+    ("The Trends Shaping A New Era of B2B Sales", "sales-is-evolving-heres-what-comes-next"),
+    ("What a Knowledge Engine Does That Conversation Intelligence Doesn't", "knowledge-engine-vs-conversation-intelligence"),
+    ("Introducing Brevian MCP: What If You Could Ask Your Sales Data Anything?", "brevian-mcp-what-if"),
+    ("Introducing Meeting Prep: AI-Generated Pre-Meeting Intelligence for Every Sales Conversation", "introducing-meeting-prep"),
+    ("Live Coaching: Real-Time Sales Intelligence During Every Conversation", "live-coaching-real-time-sales-intelligence"),
+    ("After-Call Coaching: What Should Have Been Said and Wasn't", "after-call-coaching-what-should-have-been-said"),
+    ("Deal Review: Deal Analysis That Actually Changes Rep Behavior", "deal-review-ai-deal-analysis"),
+    ("Pipeline Review: The Layer of Signal Your Pipeline Has Been Missing", "pipeline-review-ai-pipeline-health"),
+    ("CRM Updates: Your Sales Methodology Should Live in Your CRM, Not Just Your Training Deck", "crm-updates-meddpicc-crm-automation"),
+    ("Brevian Coaches the Deal, Not Just the Call", "brevian-coaches-the-deal-not-just-the-call"),
+    ("Practice the Call Before It Happens", "practice-the-call-before-it-happens"),
+]
+elsewhere_items = "".join(f'''<div class="post-item">
+      <h3><a href="https://www.brevian.ai/resources/{s}">{t} ↗</a></h3></div>\n''' for t, s in elsewhere_posts)
+elsewhere_body = f'''<section style="border:none"><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <p class="eyebrow">Writing</p>
+  <h1>Published elsewhere</h1>
+  <p style="color:var(--muted);max-width:620px">Essays I wrote on the Brevian blog. These link directly to brevian.ai.</p>
+  <div class="post-list">{elsewhere_items}</div>
+</div></section>'''
+write("writing/elsewhere.html", page("Published elsewhere · Anupreet Walia", elsewhere_body, "writing", 1,
+      "Essays by Anupreet Walia published on the Brevian blog.", cpath="writing/elsewhere.html"))
+
 write("writing/index.html", page("Writing · Anupreet Walia", writing_index, "writing", 1,
       "Essays on AI architecture, context engineering, and multi-agent systems by Anupreet Walia.",
       cpath="writing/index.html"))
@@ -927,7 +824,7 @@ for po in posts:
   {hero}
   {body_html}
   <div class="author-box">
-    <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian.{origin_line}
+    <strong>Anupreet Walia</strong> is an engineering executive and technical co-founder.{origin_line}
   </div>
 </div></article>'''
         article_ld = ('<script type="application/ld+json">\n{"@context":"https://schema.org",'
@@ -1102,7 +999,7 @@ resume_body = f'''<section style="border:none"><div class="wrap">
 
   <h2>Selected technical work</h2>
   <p><strong><a href="research.html">BatchDAG</a></strong>: LLM-planned execution graphs for scalable ad-hoc analysis over enterprise data. Deployed in production at Brevian. Preprint: <a href="https://arxiv.org/abs/2607.18241">arXiv:2607.18241</a>.</p>
-  <p><strong><a href="writing/index.html">Brevian Engineering</a></strong>: Writing on context engineering, multi-agent harnesses, knowledge graphs, and the MCP intelligence layer.</p>
+  <p><strong><a href="writing/index.html">Writing</a></strong>: Essays on AI architecture, context engineering, multi-agent systems and engineering leadership.</p>
   <p><strong><a href="patents.html">Patents</a></strong>: Six granted patents / applications from Helix on cross-network genomic data interfaces.</p>
   <p><strong><a href="https://github.com/anusual">GitHub</a></strong>: Recent hands-on engineering work under @anusual, with earlier work under <a href="https://github.com/anupreet">@anupreet</a>.</p>
 </div></section>'''
@@ -1115,7 +1012,7 @@ write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
 
 today = time.strftime("%Y-%m-%d")
 urls = ["", "research.html", "writing/index.html", "patents.html", "resume.html"]
-urls += [f"writing/{po['slug']}.html" for po in posts if po.get("host")]
+urls += [f"writing/{po['slug']}.html" for po in posts if po.get("host")] + ["writing/elsewhere.html"]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for u in urls:
