@@ -89,7 +89,7 @@ def write(path, html):
 
 # ---------------------------------------------------------------- HOME
 roles = [
-    ("10/2024 to now", "CTO &amp; Co-Founder", "Brevian AI",
+    ("12/2024 to now", "CTO &amp; Co-Founder", "Brevian AI",
      "AI sales intelligence built on a structured knowledge graph and a multi-agent LLM system. Set product vision, designed the architecture, and built the engineering org. Shipped Meeting Prep, Live Assist, Sales Coaching, and CRM Updates."),
     ("2024", "VP of Engineering", "Baseten",
      "ML infrastructure for deploying and serving AI models at scale. Led developer experience and model observability on TRT-LLM and vLLM, drove SOC2, and launched the self-hosted enterprise offering."),
@@ -131,7 +131,7 @@ ext_html = "\n".join(
 home_body = f'''<header class="hero"><div class="wrap">
   <p class="eyebrow">Engineering Executive · Technical Co-Founder</p>
   <h1>Anupreet Walia</h1>
-  <p class="lede">I build AI products from scratch and scale the teams and platforms behind them. Currently CTO &amp; Co-Founder of Brevian AI.</p>
+  <p class="lede">I build AI products from scratch and scale the teams and platforms behind them.</p>
   <p class="sub">19+ years across AI/ML systems, knowledge graphs, RAG, and agentic AI, from founding teams to orgs of 100+ engineers at venture-backed startups (Sequoia, a16z, Y Combinator). This is where my technical work, writing, research, and patents live in one place.</p>
   <div class="btn-row">
     <a class="btn primary" href="research.html">Read BatchDAG →</a>
@@ -186,7 +186,7 @@ home_body = f'''<header class="hero"><div class="wrap">
 
 write("index.html", page("Anupreet Walia · Engineering Executive · Technical Co-Founder",
       home_body, "home", 0,
-      "Anupreet Walia, CTO &amp; Co-Founder of Brevian AI. Technical product, writing, research (BatchDAG), and patents in one place.",
+      "Anupreet Walia, engineering executive and technical co-founder. Technical product, writing, research (BatchDAG), and patents in one place.",
       cpath="", head_extra=PERSON_LD))
 
 # ---------------------------------------------------------------- POSTS
