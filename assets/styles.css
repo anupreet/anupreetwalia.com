@@ -207,3 +207,4 @@ article th, article td { border: 1px solid var(--line); padding: 10px 12px; text
 article th { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
 article td strong { color: var(--accent-hover); }
 article .post-hero { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; margin: 24px 0 8px; }
+article p > img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; margin: 12px 0 4px; }

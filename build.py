@@ -283,6 +283,8 @@ For Architecture, I care about defect rates, MTTR, deployment frequency and lead
 
 For Systems/Processes, I care about satisfaction, performance and how well teams collaborate.
 
+![The engineering system: company strategy informs product strategy, expressed as a roadmap of bets, which engineering executes through People, Architecture and Systems/Processes, each with its own health signals.](../assets/engineering-system-model.png)
+
 These tell me whether different parts of the system are operating well. They don't tell me whether the system as a whole is producing what we need from it.
 
 For that, I look for three properties: **Efficiency, Accuracy and Growth**.
