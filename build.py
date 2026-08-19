@@ -199,6 +199,8 @@ posts = [
       "read": "8 min",
       "host": True,
       "first_here": True,
+      "image": "architecture-at-agent-speed-header.png",
+      "image_alt": "How governed architectural decisions move through the loop: spec review starts from the governed decisions, build gives them to the agent as context, PR review evaluates the code diff plus the decision delta, and drift detection surfaces de facto decisions forming in the repository.",
       "deck": "Coding agents let repositories evolve faster than teams can absorb the decisions being made. Architecture becomes a set of governed decisions that move through spec review, implementation and drift detection at the same rate as the code.",
       "md": """Coding agents have drastically increased the rate at which code gets written and how quickly repositories evolve. Every code change also carries decisions about the system: a new service creates a boundary, a feature introduces a representation of a domain concept, or an implementation adds a dependency and extends an existing pattern. Most of these decisions look reasonable in the context of the change being made.
 
@@ -262,6 +264,8 @@ As coding agents increase the rate at which repositories evolve, the decisions n
       "read": "6 min",
       "host": True,
       "first_here": True,
+      "image": "observing-engineering-system-header.png",
+      "image_alt": "Three properties of a healthy engineering system: Efficiency (capacity allocation, bet predictability, delivery, deploy to evidence), Accuracy (works as built, works as expected by the customer, bet outcome vs expected) and Growth (team, usage and revenue grow without disproportionate engineering work).",
       "deck": "The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three properties I look for: Efficiency, Accuracy and Growth.",
       "md": """As engineering leaders, we track a lot of metrics. Deployment frequency, lead time, defects, uptime, MTTR, roadmap delivery, customer bugs, team health, etc.
 
@@ -395,8 +399,6 @@ We can have a reliable product with growing usage while every increase in scale 
 
 We can also miss a product hypothesis while having a healthy engineering system that got us to that answer quickly and accurately.
 
-The metrics are observations of the system, not the system itself.
-
 People, Architecture and Systems/Processes tell us how the machinery is operating.
 
 Efficiency, Accuracy and Growth tell us whether that machinery can execute the strategy we are asking it to execute.
@@ -411,6 +413,8 @@ As the dev loop expands from delivery to learning, the observations need to expa
       "read": "5 min",
       "host": True,
       "first_here": True,
+      "image": "from-delivery-to-learning-header.png",
+      "image_alt": "The dev loop extended from delivery to learning: hypothesis, specification, build, test, deploy, then observe, learn and iterate. The old boundary was deploy; executing the bet now includes activation, instrumentation and the first feedback loop.",
       "deck": "If engineering can implement a feature 3x faster but it takes the same time to learn whether customers want it, we haven't captured the gain. Why the dev loop needs to extend from delivery to learning.",
       "md": """If engineering can implement a feature 3x faster, but it still takes us the same amount of time to learn whether customers actually want it, have we captured the productivity gain we expected from AI?
 
@@ -420,7 +424,7 @@ AI is making parts of that loop faster, particularly planning and implementation
 
 When this loop became faster, the real bottleneck moved to choosing what gets built and we call it "taste" or judgement.
 
-If we look back, when we were shipping CDs and the cost of bugs was high, we used to have a separate QA stage. As we moved to CI/CD, the cost of shipping and fixing bugs became lower and we shifted QA left. The same argument can be made now for product taste or judgement. If we truly want to benefit from the AI wave, we need to move this left, i.e. make it part of the dev loop.
+If we look back, when we were shipping CDs and the cost of bugs was high, we used to have a separate QA stage. As we moved to CI/CD, the cost of shipping and fixing bugs became lower and we shifted QA left. The same argument can be made now for product taste or judgement. If we want to benefit from AI, we need to move this left, i.e. make it part of the dev loop.
 
 That means extending the development loop from **delivery to learning**.
 

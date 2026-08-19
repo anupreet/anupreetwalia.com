@@ -13,11 +13,11 @@
 <meta property="og:title" content="[WIP] Architecture at Agent Speed · Anupreet Walia">
 <meta property="og:description" content="Coding agents let repositories evolve faster than teams can absorb the decisions being made. Architecture becomes a set of governed decisions that mov">
 <meta property="og:url" content="https://anupreetwalia.com/writing/architecture-at-agent-speed.html">
-<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta property="og:image" content="https://anupreetwalia.com/assets/architecture-at-agent-speed-header.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="[WIP] Architecture at Agent Speed · Anupreet Walia">
 <meta name="twitter:description" content="Coding agents let repositories evolve faster than teams can absorb the decisions being made. Architecture becomes a set of governed decisions that mov">
-<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/architecture-at-agent-speed-header.png">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../assets/styles.css?v=1787161059">
+<link rel="stylesheet" href="../assets/styles.css?v=1787161844">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"[WIP] Architecture at Agent Speed","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026-08-19","url":"https://anupreetwalia.com/writing/architecture-at-agent-speed.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
 </script>
@@ -47,7 +47,7 @@
   <div class="post-meta">Aug 19, 2026 · 8 min read</div>
   <h1>[WIP] Architecture at Agent Speed</h1>
   <p class="deck">Coding agents let repositories evolve faster than teams can absorb the decisions being made. Architecture becomes a set of governed decisions that move through spec review, implementation and drift detection at the same rate as the code.</p>
-  
+  <img class="post-hero" src="../assets/architecture-at-agent-speed-header.png" alt="How governed architectural decisions move through the loop: spec review starts from the governed decisions, build gives them to the agent as context, PR review evaluates the code diff plus the decision delta, and drift detection surfaces de facto decisions forming in the repository.">
   <p>Coding agents have drastically increased the rate at which code gets written and how quickly repositories evolve. Every code change also carries decisions about the system: a new service creates a boundary, a feature introduces a representation of a domain concept, or an implementation adds a dependency and extends an existing pattern. Most of these decisions look reasonable in the context of the change being made.</p>
 <p>Individual decisions generated in a single spec are not the issue. The problem shows up when these decisions stack across multiple features and branches. One feature introduces a pattern, another makes a slightly different choice, and a third extends the first pattern for a new use case. Each plan can be sane independently and each PR can be correct, while the resulting architecture is one we never consciously decided to build.</p>
 <p>This isn't a new problem. Engineering teams have always accumulated decisions as they build software, and we use tech specs, ADRs (architecture decision records), architecture reviews, code reviews and conventions to keep the team aligned. A lot of this context also lives with engineers who have worked on the system long enough to know why something is built the way it is. Coding agents change the rate at which these decisions accumulate. Repositories can now evolve faster than the engineering organization can review the decisions being made, absorb them and keep the rest of the team aligned.</p>
