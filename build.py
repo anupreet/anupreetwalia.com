@@ -898,7 +898,7 @@ for po in posts:
 writing_index = f'''<section style="border:none"><div class="wrap">
   <p class="eyebrow">Writing</p>
   <h1>Essays</h1>
-  <p style="color:var(--muted);max-width:620px">Pieces on AI architecture, context engineering, building production multi-agent systems, and the craft of engineering. Published on the Brevian blog and LinkedIn.</p>
+  <p style="color:var(--muted);max-width:620px">Pieces on AI architecture, context engineering, building production multi-agent systems, and the craft of engineering.</p>
   <div class="post-list">{post_index_items}</div>
 </div></section>'''
 write("writing/index.html", page("Writing · Anupreet Walia", writing_index, "writing", 1,
