@@ -750,9 +750,7 @@ Choosing between a prompt loop, an orchestrator with subagent-tools, and a fully
       "modified": True,
       "deck": "RAG answers retrieval questions. Reasoning over a live operational domain needs relationships, persistent state, a lens on the current context and access control, and that requires a knowledge graph.",
       "orig": "https://www.brevian.ai/resources/why-rag-is-not-enough-revenue-intelligence",
-      "md": """Most enterprise AI applications today are built using RAG.
-
-Retrieval-Augmented Generation was a genuine architectural step forward. By grounding language model outputs in external document corpora rather than parametric memory alone, RAG addressed hallucination and knowledge staleness in a practical, deployable way. The original [Lewis et al. (2020) paper](https://arxiv.org/abs/2005.11401) that coined the term demonstrated strong gains on knowledge-intensive tasks, and the pattern spread quickly across enterprise software.
+      "md": """Retrieval-Augmented Generation was a genuine architectural step forward. By grounding language model outputs in external document corpora rather than parametric memory alone, RAG addressed hallucination and knowledge staleness in a practical, deployable way. The original [Lewis et al. (2020) paper](https://arxiv.org/abs/2005.11401) that coined the term demonstrated strong gains on knowledge-intensive tasks, and the pattern spread quickly across enterprise software.
 
 RAG works, but it was designed for retrieval questions, and a growing class of enterprise applications requires answering reasoning questions. Conflating the two is where many of these deployments break down.
 
@@ -918,7 +916,8 @@ for po in posts:
         else:
             pub_verb = "Originally published"
         origin_line = f' {pub_verb} on <a href="{orig}">{venue}</a>.' if orig else ""
-        meta_bits = " · ".join(x for x in [po["date"], (po.get("read","") + " read" if po.get("read") else ""), venue] if x)
+        meta_venue = "" if po.get("modified") else venue
+        meta_bits = " · ".join(x for x in [po["date"], (po.get("read","") + " read" if po.get("read") else ""), meta_venue] if x)
         hero = f'<img class="post-hero" src="../assets/{po["image"]}" alt="{po.get("image_alt","")}">' if po.get("image") else ""
         art = f'''<article><div class="wrap">
   <a class="back" href="index.html">← all writing</a>
