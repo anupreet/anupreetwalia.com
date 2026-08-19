@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observing a Healthy Engineering System · Anupreet Walia</title>
+<meta name="description" content="The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three propert">
+<meta name="author" content="Anupreet Walia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anupreetwalia.com/writing/observing-a-healthy-engineering-system.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Anupreet Walia">
+<meta property="og:title" content="Observing a Healthy Engineering System · Anupreet Walia">
+<meta property="og:description" content="The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three propert">
+<meta property="og:url" content="https://anupreetwalia.com/writing/observing-a-healthy-engineering-system.html">
+<meta property="og:image" content="https://anupreetwalia.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Observing a Healthy Engineering System · Anupreet Walia">
+<meta name="twitter:description" content="The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three propert">
+<meta name="twitter:image" content="https://anupreetwalia.com/assets/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0d9488">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/styles.css?v=1787119326">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Observing a Healthy Engineering System","author":{"@type":"Person","name":"Anupreet Walia"},"datePublished":"2026-08-18","url":"https://anupreetwalia.com/writing/observing-a-healthy-engineering-system.html","publisher":{"@type":"Organization","name":"Anupreet Walia"}}
+</script>
+</head>
+<body>
+<nav class="site"><div class="wrap">
+  <a class="brand" href="../index.html">anupreet walia<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../index.html#work">work</a>
+    <a href="../writing/index.html" class="active">writing</a>
+    <a href="../research.html">research</a>
+    <a href="../patents.html">patents</a>
+    <a href="../resume.html">r&eacute;sum&eacute;</a>
+  </div>
+</div></nav>
+<article><div class="wrap">
+  <a class="back" href="index.html">← all writing</a>
+  <div class="post-meta">Aug 18, 2026 · 6 min read</div>
+  <h1>Observing a Healthy Engineering System</h1>
+  <p class="deck">The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy. Three properties I look for: Efficiency, Accuracy and Growth.</p>
+  
+  <p>As engineering leaders, we track a lot of metrics. Deployment frequency, lead time, defects, uptime, MTTR, roadmap delivery, customer bugs, team health, etc.</p>
+<p>The hard part isn't finding things to measure. It is knowing whether the things we measure tell us if the engineering system is healthy.</p>
+<p>I use a simple model for the engineering system.</p>
+<p>Company strategy informs Product strategy. Product strategy gets expressed as a roadmap, which is a set of bets about where we should invest. Engineering executes those bets through three things: <strong>People, Architecture and Systems/Processes</strong>.</p>
+<p>Each of these has its own health signals.</p>
+<p>For People, I care about things like cognitive load, communication overhead, ownership and knowledge sharing.</p>
+<p>For Architecture, I care about defect rates, MTTR, deployment frequency and lead time.</p>
+<p>For Systems/Processes, I care about satisfaction, performance and how well teams collaborate.</p>
+<p>These tell me whether different parts of the system are operating well. They don't tell me whether the system as a whole is producing what we need from it.</p>
+<p>For that, I look for three properties: <strong>Efficiency, Accuracy and Growth</strong>.</p>
+<h3>Efficiency</h3>
+<p>An efficient engineering system spends its capacity where we intended, executes its bets predictably and gets to evidence quickly.</p>
+<p>The first thing I want to know is where the capacity went.</p>
+<p>If the company strategy requires us to invest in Growth and Moat, but most of the engineering capacity is going into Floor and Gate work, the engineering organization may be executing well while still not executing the strategy.</p>
+<p>This can be as simple as looking at planned vs actual allocation across the roadmap bets.</p>
+<p>The second is predictability of the bets.</p>
+<p>Roadmap commit vs delivered has historically been a useful measure here, but delivery is no longer the complete boundary. In <a href="https://anupreetwalia.com/writing/from-delivery-to-learning.html">From Delivery to Learning</a>, I expanded the dev loop from:</p>
+<p><strong>hypothesis → specification → build → test → deploy</strong></p>
+<p>to:</p>
+<p><strong>hypothesis → specification → build → test → deploy → observe → learn → iterate</strong></p>
+<p>So predictability needs to account for the bet, not just the feature. Did the bets we committed to progress to a result in the window we expected?</p>
+<p>This doesn't mean the original scope needs to ship unchanged. A bet can change or stop because we learned something and still have moved through the system successfully.</p>
+<p>DORA continues to measure an important part of this cycle. Deployment frequency, lead time and the stability of the delivery system tell us whether we can get changes into production efficiently.</p>
+<p>I would add another clock after deployment:</p>
+<p><strong>deploy → evidence</strong></p>
+<p>Once the feature is in production, how long does it take us to know what happened?</p>
+<p>If implementation gets 10x faster but a feature sits in production for six weeks before we know whether the customer can use it, the bottleneck moved. Measuring deploy → evidence makes that part of the loop visible.</p>
+<p>So for Efficiency I want to observe:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>What I am looking for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity allocation</td>
+<td>Did engineering capacity go where we intended?</td>
+</tr>
+<tr>
+<td>Bet predictability</td>
+<td>Did the bets progress to a result in the expected window?</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Can we get changes into production quickly and reliably?</td>
+</tr>
+<tr>
+<td>Deploy → evidence</td>
+<td>How quickly do we know what happened after deployment?</td>
+</tr>
+</tbody>
+</table>
+<h3>Accuracy</h3>
+<p>Efficiency tells us how well work moves through the system. We also need to know whether we are doing the work right.</p>
+<p>There are two kinds of correctness here.</p>
+<p><strong>It works as built.</strong></p>
+<p>The software behaves the way we specified. It is available, reliable and doesn't generate an unreasonable number of defects. SLA/uptime, defect rates, MTTR and other reliability measures give us this view.</p>
+<p><strong>It works as expected by the customer.</strong></p>
+<p>A feature can have 99.99% uptime, no bugs and still not work for the customer.</p>
+<p>The customer may not be able to discover it. The workflow may not make sense. They may not be able to complete the job we expected them to complete. Or they may use it correctly and still not get the value in the original hypothesis.</p>
+<p>This is where Product NPS, customer-reported issues and the expected outcome of the bet come in.</p>
+<p>The distinction also matters when a bet fails.</p>
+<p>Say we made a Gate bet because five customers told us they needed a capability. We built it correctly, all five could use it as intended, and none of them ended up needing it.</p>
+<p>The bet was wrong. The engineering system wasn't necessarily inaccurate.</p>
+<p>Now take the same feature, but the customers want it and can't complete the workflow because the UX prevents them from doing so. The software may technically work as built, but it isn't working as expected by the customer.</p>
+<p>Both views belong in Accuracy.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>What I am looking for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reliability / SLA</td>
+<td>Does it work as built?</td>
+</tr>
+<tr>
+<td>Defects / MTTR</td>
+<td>How often does it break and how quickly do we recover?</td>
+</tr>
+<tr>
+<td>Customer-reported issues</td>
+<td>Where does the customer's experience differ from what we built?</td>
+</tr>
+<tr>
+<td>Bet outcome vs expected outcome</td>
+<td>Did the customer get the result the hypothesis expected?</td>
+</tr>
+</tbody>
+</table>
+<h3>Growth</h3>
+<p>A healthy engineering system also needs organic, easy paths to scale.</p>
+<p>I look at scale across three surfaces: <strong>team, usage and revenue</strong>.</p>
+<p>For the team, can we add people without communication and coordination overhead growing faster than the team? Can a new engineer become productive without needing to understand the entire system? Do ownership boundaries continue to work as the organization grows?</p>
+<p>For usage, can the system handle the growth we expect? That could be users, transactions, API calls, workloads or whatever represents scale for the product.</p>
+<p>For revenue, can the product support the next level of commercial growth without engineering becoming the constraint? If every new revenue tier, customer segment or large customer requires bespoke engineering work, revenue can be growing while the engineering system itself isn't scaling.</p>
+<p>I compare these against what we planned for.</p>
+<p>If we planned for 2x transactions and achieved 2x transactions, that alone doesn't tell me the system scaled well. If getting there required three months of emergency capacity work and heroics, we reached the number but didn't have an easy path to it.</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>What I am looking for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Team</td>
+<td>Can we add people without disproportionate coordination and cognitive load?</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Can users, transactions, API calls and workloads grow without disproportionate engineering work?</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>Can revenue grow without engineering becoming the constraint?</td>
+</tr>
+</tbody>
+</table>
+<h3>Putting the views together</h3>
+<p>A system can look healthy from one view and be unhealthy from another.</p>
+<p>We can have excellent DORA metrics and consistently deliver the wrong bets.</p>
+<p>We can deliver the right bets quickly and have customers unable to use them.</p>
+<p>We can have a reliable product with growing usage while every increase in scale requires an engineering project.</p>
+<p>We can also miss a product hypothesis while having a healthy engineering system that got us to that answer quickly and accurately.</p>
+<p>The metrics are observations of the system, not the system itself.</p>
+<p>People, Architecture and Systems/Processes tell us how the machinery is operating.</p>
+<p>Efficiency, Accuracy and Growth tell us whether that machinery can execute the strategy we are asking it to execute.</p>
+<p>As the dev loop expands from delivery to learning, the observations need to expand with it.</p>
+  <div class="author-box">
+    <strong>Anupreet Walia</strong> is CTO &amp; Co-Founder of Brevian.
+  </div>
+</div></article>
+<footer><div class="wrap">
+  <span>© 2026 Anupreet Walia</span>
+  <span><a href="https://www.linkedin.com/in/anupreetwalia/">LinkedIn</a> · <a href="https://github.com/anusual">GitHub</a> · <a href="https://scholar.google.com/citations?user=_PfGUfcAAAAJ&hl=en">Scholar</a></span>
+</div></footer>
+</body>
+</html>
