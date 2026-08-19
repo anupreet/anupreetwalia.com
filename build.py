@@ -752,7 +752,7 @@ Choosing between a prompt loop, an orchestrator with subagent-tools, and a fully
       "orig": "https://www.brevian.ai/resources/why-rag-is-not-enough-revenue-intelligence",
       "md": """Retrieval-Augmented Generation was a genuine architectural step forward. By grounding language model outputs in external document corpora rather than parametric memory alone, RAG addressed hallucination and knowledge staleness in a practical, deployable way. The original [Lewis et al. (2020) paper](https://arxiv.org/abs/2005.11401) that coined the term demonstrated strong gains on knowledge-intensive tasks, and the pattern spread quickly across enterprise software.
 
-RAG works, but it was designed for retrieval questions, and a growing class of enterprise applications requires answering reasoning questions. Conflating the two is where many of these deployments break down.
+RAG works, but it was designed for retrieval questions, and a growing class of enterprise applications requires answering reasoning questions.
 
 The retrieval question is: given a query, find the most relevant content. RAG solves this well. The reasoning question is harder: given everything the system knows about an entity, whether that is a deal, a customer, a project or an incident, what does it mean and what should happen next? Answering it requires understanding the relationships between entities, tracking how context evolves across time, and connecting what happened three weeks ago to what should happen before Thursday. RAG was not designed to do that.
 
