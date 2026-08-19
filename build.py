@@ -129,7 +129,7 @@ ext_html = "\n".join(
     for t,u in links_external)
 
 home_body = f'''<header class="hero"><div class="wrap">
-  <p class="eyebrow">Engineering executive · Technical co-founder</p>
+  <p class="eyebrow">Engineering Executive · Technical Co-Founder</p>
   <h1>Anupreet Walia</h1>
   <p class="lede">I build AI products from scratch and scale the teams and platforms behind them. Currently CTO &amp; Co-Founder of Brevian AI.</p>
   <p class="sub">19+ years across AI/ML systems, knowledge graphs, RAG, and agentic AI, from founding teams to orgs of 100+ engineers at venture-backed startups (Sequoia, a16z, Y Combinator). This is where my technical work, writing, research, and patents live in one place.</p>
@@ -184,7 +184,7 @@ home_body = f'''<header class="hero"><div class="wrap">
   </a>
 </div></section>'''
 
-write("index.html", page("Anupreet Walia · Engineering executive &amp; technical co-founder",
+write("index.html", page("Anupreet Walia · Engineering Executive · Technical Co-Founder",
       home_body, "home", 0,
       "Anupreet Walia, CTO &amp; Co-Founder of Brevian AI. Technical product, writing, research (BatchDAG), and patents in one place.",
       cpath="", head_extra=PERSON_LD))
@@ -748,7 +748,7 @@ Choosing between a prompt loop, an orchestrator with subagent-tools, and a fully
       "read": "7 min",
       "host": True,
       "modified": True,
-      "deck": "RAG answers retrieval questions. Reasoning over a live operational domain needs relationships, persistent state, a lens on the current context and access control, and that requires a knowledge graph.",
+      "deck": "RAG answers retrieval questions. Enterprise-wide intelligence needs reasoning over relationships, state, lens and access control, and that requires a knowledge graph.",
       "orig": "https://www.brevian.ai/resources/why-rag-is-not-enough-revenue-intelligence",
       "md": """Retrieval-Augmented Generation was a genuine architectural step forward. By grounding language model outputs in external document corpora rather than parametric memory alone, RAG addressed hallucination and knowledge staleness in a practical, deployable way. The original [Lewis et al. (2020) paper](https://arxiv.org/abs/2005.11401) that coined the term demonstrated strong gains on knowledge-intensive tasks, and the pattern spread quickly across enterprise software.
 
